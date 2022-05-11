@@ -9,6 +9,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#808CC6"
         android:orientation="vertical">
 
         <LinearLayout
@@ -113,12 +114,27 @@
             </LinearLayout>
         </ScrollView>
 
-        <Button
-            android:id="@+id/button"
-            style="@style/Widget.AppCompat.Button.Small"
+        <TextView
+            android:id="@+id/textView3"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="5"
-            android:text="publicar" />
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:background="#808CC6"
+            android:gravity="center"
+            android:text="Publicar(barra)"
+            android:textSize="20sp" />
+
+        <SeekBar
+            android:id="@+id/seekBar3"
+            style="@style/Widget.AppCompat.SeekBar"
+            android:layout_width="203dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_weight="0"
+            android:background="#808CC6"
+            android:max="100"
+            android:progress="100"
+            android:progressBackgroundTintMode="src_in" />
+
     </LinearLayout>
 </FrameLayout>
