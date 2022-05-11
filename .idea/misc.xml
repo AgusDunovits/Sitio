@@ -4,6 +4,9 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Proyecto/SITIO/Proyecto/app/src/main/res/layout/activity_main.xml" value="0.3578125" />
+        <entry key="..\:/Proyecto/SITIO/Proyecto/app/src/main/res/layout/activity_principal.xml" value="0.371875" />
+        <entry key="..\:/Proyecto/SITIO/Proyecto/app/src/main/res/layout/fragment_fragmento_buscar.xml" value="0.371875" />
+        <entry key="..\:/Proyecto/SITIO/Proyecto/app/src/main/res/layout/fragment_fragmento_casa.xml" value="0.33" />
       </map>
     </option>
   </component>
