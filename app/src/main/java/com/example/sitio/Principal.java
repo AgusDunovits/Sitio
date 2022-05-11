@@ -15,10 +15,15 @@ public class Principal extends AppCompatActivity {
 
     private Fragmento_casa Fragmento_casa = new Fragmento_casa();
     private Fragmento_buscar Fragmento_buscar = new Fragmento_buscar();
-    private Button boton_casa;
-    private Button boton_buscar;
+    private Fragmento_usuario Fragmento_usuario = new Fragmento_usuario();
+    private Fragmento_sugerencias Fragmento_sugerencias = new Fragmento_sugerencias();
+    private Fragmento_mapa Fragmento_mapa = new Fragmento_mapa();
+    private Button boton_casa, boton_buscar ,boton_sugerencias, boton_usuario, boton_mapa;
     private Boolean entro_casa = false;
     private Boolean entro_buscar = true;
+    private Boolean entro_usuario = true;
+    private Boolean entro_sugerencias = true;
+    private Boolean entro_mapa = true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +34,9 @@ public class Principal extends AppCompatActivity {
         //
         boton_casa = findViewById(R.id.boton_casa);
         boton_buscar = findViewById(R.id.boton_buscar);
+        boton_usuario = findViewById(R.id.boton_usuario);
+        boton_sugerencias = findViewById(R.id.boton_sugerencias);
+        boton_mapa = findViewById(R.id.boton_mapa);
         cambiar_fragmentos(Fragmento_casa);
         boton_casa.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,7 +45,9 @@ public class Principal extends AppCompatActivity {
                     cambiar_fragmentos(Fragmento_casa);
                     entro_casa = false;
                     entro_buscar = true;
-
+                    entro_usuario = true;
+                    entro_sugerencias = true;
+                    entro_mapa = true;
                 }
             }
         });
@@ -48,6 +58,48 @@ public class Principal extends AppCompatActivity {
                     cambiar_fragmentos(Fragmento_buscar);
                     entro_casa = true;
                     entro_buscar = false;
+                    entro_usuario = true;
+                    entro_sugerencias = true;
+                    entro_mapa = true;
+                }
+            }
+        });
+        boton_usuario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(entro_usuario) {
+                    cambiar_fragmentos(Fragmento_usuario);
+                    entro_casa = true;
+                    entro_buscar = true;
+                    entro_usuario = false;
+                    entro_sugerencias = true;
+                    entro_mapa = true;
+                }
+            }
+        });
+        boton_sugerencias.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(entro_sugerencias) {
+                    cambiar_fragmentos(Fragmento_sugerencias);
+                    entro_casa = true;
+                    entro_buscar = true;
+                    entro_usuario = true;
+                    entro_sugerencias = false;
+                    entro_mapa = true;
+                }
+            }
+        });
+        boton_mapa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(entro_mapa) {
+                    cambiar_fragmentos(Fragmento_mapa);
+                    entro_casa = true;
+                    entro_buscar = true;
+                    entro_usuario = true;
+                    entro_sugerencias = true;
+                    entro_mapa = false;
                 }
             }
         });
