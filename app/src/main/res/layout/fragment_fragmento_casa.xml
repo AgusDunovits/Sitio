@@ -9,34 +9,30 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="45dp"
-        android:background="#EA673E"
+        android:background="#333333"
         android:orientation="horizontal">
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="281dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center|left"
-            android:paddingLeft="10dp"
-            android:text="SITIO"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="20" />
 
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="0"
+            android:layout_weight="1"
             android:src="@android:drawable/ic_menu_search" />
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="98dp"
             android:layout_height="match_parent"
-            android:layout_weight="0"
+            android:layout_weight="1"
             android:gravity="center"
             android:text="BUSCAR"
+            android:textColor="#FFFFFF"
             android:textStyle="bold" />
 
     </LinearLayout>
