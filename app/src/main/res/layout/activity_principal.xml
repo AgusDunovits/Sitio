@@ -10,7 +10,7 @@
         android:id="@+id/linearLayout"
         android:layout_width="0dp"
         android:layout_height="59dp"
-        android:background="#E3726A"
+        android:background="#606060"
         android:gravity="bottom"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -21,36 +21,46 @@
             android:id="@+id/boton_casa"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Button" />
+            android:layout_weight="2"
+            android:backgroundTint="#FBA934"
+            android:text="INI\nCIO"
+            android:textColor="#000000" />
 
         <Button
             android:id="@+id/boton_buscar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Button" />
-
-        <Button
-            android:id="@+id/boton_usuario"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Button" />
-
-        <Button
-            android:id="@+id/boton_sugerencias"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Button" />
+            android:layout_weight="2"
+            android:text="BUS\nCAR"
+            android:backgroundTint="#DABD94"
+            android:textColor="#000000" />
 
         <Button
             android:id="@+id/boton_mapa"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Button" />
+            android:text="MA\nPA"
+            android:backgroundTint="#DABD94"
+            android:textColor="#000000" />
+
+        <Button
+            android:id="@+id/boton_sugerencias"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="PUBLI\nCAR"
+            android:backgroundTint="#DABD94"
+            android:textColor="#000000" />
+
+        <Button
+            android:id="@+id/boton_usuario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="PER\nFIL"
+            android:backgroundTint="#DABD94"
+            android:textColor="#000000" />
 
     </LinearLayout>
 

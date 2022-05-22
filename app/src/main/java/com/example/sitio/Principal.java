@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,17 +14,16 @@ import android.widget.Button;
 
 public class Principal extends AppCompatActivity {
 
-    private Fragmento_casa Fragmento_casa = new Fragmento_casa();
-    private Fragmento_buscar Fragmento_buscar = new Fragmento_buscar();
-    private Fragmento_usuario Fragmento_usuario = new Fragmento_usuario();
-    private Fragmento_sugerencias Fragmento_sugerencias = new Fragmento_sugerencias();
-    private Fragmento_mapa Fragmento_mapa = new Fragmento_mapa();
-    private Button boton_casa, boton_buscar ,boton_sugerencias, boton_usuario, boton_mapa;
-    private Boolean entro_casa = false;
-    private Boolean entro_buscar = true;
-    private Boolean entro_usuario = true;
-    private Boolean entro_sugerencias = true;
-    private Boolean entro_mapa = true;
+    private Fragment[] Fragmentos = {
+            new Fragmento_casa(),
+            new Fragmento_buscar(),
+            new Fragmento_mapa(),
+            new Fragmento_sugerencias(),
+            new Fragmento_usuario()
+    };
+    private Boolean[] boton_active = {true,false,false,false,false};
+    private Button[] barra_boton = new Button[5];
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,79 +32,59 @@ public class Principal extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();   // ESCONDER
         //
-        boton_casa = findViewById(R.id.boton_casa);
-        boton_buscar = findViewById(R.id.boton_buscar);
-        boton_usuario = findViewById(R.id.boton_usuario);
-        boton_sugerencias = findViewById(R.id.boton_sugerencias);
-        boton_mapa = findViewById(R.id.boton_mapa);
+        barra_boton[0] = findViewById(R.id.boton_casa);
+        barra_boton[1] = findViewById(R.id.boton_buscar);
+        barra_boton[2] = findViewById(R.id.boton_mapa);
+        barra_boton[3] = findViewById(R.id.boton_sugerencias);
+        barra_boton[4] = findViewById(R.id.boton_usuario);
         cambiar_fragmentos(Fragmento_casa);
-        boton_casa.setOnClickListener(new View.OnClickListener() {
+
+        barra_boton[0].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(entro_casa) {
-                    cambiar_fragmentos(Fragmento_casa);
-                    entro_casa = false;
-                    entro_buscar = true;
-                    entro_usuario = true;
-                    entro_sugerencias = true;
-                    entro_mapa = true;
-                }
+                onClickStatus(0);
             }
         });
-        boton_buscar.setOnClickListener(new View.OnClickListener() {
+        barra_boton[1].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(entro_buscar) {
-                    cambiar_fragmentos(Fragmento_buscar);
-                    entro_casa = true;
-                    entro_buscar = false;
-                    entro_usuario = true;
-                    entro_sugerencias = true;
-                    entro_mapa = true;
-                }
+                onClickStatus(1);
             }
         });
-        boton_usuario.setOnClickListener(new View.OnClickListener() {
+        barra_boton[2].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(entro_usuario) {
-                    cambiar_fragmentos(Fragmento_usuario);
-                    entro_casa = true;
-                    entro_buscar = true;
-                    entro_usuario = false;
-                    entro_sugerencias = true;
-                    entro_mapa = true;
-                }
+                onClickStatus(2);
             }
         });
-        boton_sugerencias.setOnClickListener(new View.OnClickListener() {
+        barra_boton[3].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(entro_sugerencias) {
-                    cambiar_fragmentos(Fragmento_sugerencias);
-                    entro_casa = true;
-                    entro_buscar = true;
-                    entro_usuario = true;
-                    entro_sugerencias = false;
-                    entro_mapa = true;
-                }
+                onClickStatus(3);
             }
         });
-        boton_mapa.setOnClickListener(new View.OnClickListener() {
+        barra_boton[4].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(entro_mapa) {
-                    cambiar_fragmentos(Fragmento_mapa);
-                    entro_casa = true;
-                    entro_buscar = true;
-                    entro_usuario = true;
-                    entro_sugerencias = true;
-                    entro_mapa = false;
-                }
+                onClickStatus(4);
             }
         });
     }
 
+    private void onClickStatus(int posicion){
+        for(int n=0; n < boton_active.length ; n++) {
+            if(n==posicion) {
+                cambiar_fragmentos(Fragmentos[n]);
+                boton_active[n] = true;
+                barra_boton[n].setBackgroundColor(Color.parseColor("#FBA934"));
+            } else {
+                if(boton_active[n]) {
+                    barra_boton[n].setBackgroundColor(Color.parseColor("#DABD94"));
+                }
+                boton_active[n] = false;
+            }
+        }
+    };
 
     public void cambiar_fragmentos(Fragment fragmento) {
         FragmentManager fragmentManager = getSupportFragmentManager();
