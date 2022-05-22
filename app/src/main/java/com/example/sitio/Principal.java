@@ -37,7 +37,7 @@ public class Principal extends AppCompatActivity {
         barra_boton[2] = findViewById(R.id.boton_mapa);
         barra_boton[3] = findViewById(R.id.boton_sugerencias);
         barra_boton[4] = findViewById(R.id.boton_usuario);
-        cambiar_fragmentos(Fragmento_casa);
+        cambiar_fragmentos(Fragmentos[0]);
 
         barra_boton[0].setOnClickListener(new View.OnClickListener() {
             @Override
