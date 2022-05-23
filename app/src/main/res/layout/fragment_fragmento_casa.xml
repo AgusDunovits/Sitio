@@ -54,15 +54,22 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/LayoutHistorias"
+        <HorizontalScrollView
             android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:layout_marginTop="5dp"
-            android:background="#EDEDED"
-            android:baselineAligned="false"
-            android:orientation="horizontal"
-            android:paddingLeft="5dp"></LinearLayout>
+            android:layout_height="60dp"
+            android:layout_marginTop="2dp"
+            android:background="#EFEFEF">
+
+            <LinearLayout
+                android:id="@+id/LayoutHistorias"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:baselineAligned="false"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:scrollbarAlwaysDrawHorizontalTrack="true"></LinearLayout>
+        </HorizontalScrollView>
     </LinearLayout>
 
 </FrameLayout>
