@@ -14,16 +14,23 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="45dp"
-            android:background="#222222"
+            android:layout_marginTop="2dp"
+            android:background="#FFFFFF"
             android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/imageView31"
+                android:id="@+id/imageView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="20"
-                android:scaleType="center"
-                android:src="@mipmap/logoblanco_foreground" />
+                android:layout_weight="5"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/logonegro1_foreground" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="15" />
 
             <ImageButton
                 android:id="@+id/imageButton2"
@@ -31,7 +38,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginRight="5dp"
                 android:layout_weight="5"
-                android:background="#3C3C3C"
+                android:background="#9E9E9E"
                 android:baselineAlignBottom="false"
                 android:cropToPadding="false"
                 android:src="@android:drawable/sym_action_chat" />
@@ -41,7 +48,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="6"
-                android:background="#3C3C3C"
+                android:background="#9E9E9E"
                 android:scaleType="centerInside"
                 android:src="@android:drawable/stat_notify_chat" />
 
@@ -51,7 +58,8 @@
             android:id="@+id/LayoutHistorias"
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:background="#FFD9B2"
+            android:layout_marginTop="5dp"
+            android:background="#EDEDED"
             android:baselineAligned="false"
             android:orientation="horizontal"
             android:paddingLeft="5dp"></LinearLayout>
