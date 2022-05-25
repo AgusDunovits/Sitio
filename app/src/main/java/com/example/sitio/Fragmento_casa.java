@@ -7,6 +7,9 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.GridLayout.LayoutParams;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -62,6 +65,21 @@ public class Fragmento_casa extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_fragmento_casa, container, false);
+        int cantidad_historias = 4;
+        LayoutParams params1;
+        View vista_inicio = inflater.inflate(R.layout.fragment_fragmento_casa, container, false);
+        LinearLayout LL_layoutHistorias = vista_inicio.findViewById(R.id.LayoutHistorias);
+        if(cantidad_historias == 0){
+            LL_layoutHistorias.setVisibility(vista_inicio.GONE);
+        } else {
+            for (int n = 0 ; n < cantidad_historias ; n++) {
+                String descripcion = "Historia\n" + String.valueOf(n);
+                Button boton = new Button(vista_inicio.getContext());
+                boton.setText(descripcion);
+                boton.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                LL_layoutHistorias.addView(boton);
+            }
+        };
+        return vista_inicio;
     }
 }

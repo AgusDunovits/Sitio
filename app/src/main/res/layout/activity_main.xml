@@ -12,15 +12,16 @@
         android:gravity="center"
         android:orientation="vertical"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp">
+        tools:layout_editor_absoluteY="-31dp">
 
         <ImageView
             android:id="@+id/imageView5"
             android:layout_width="match_parent"
-            android:layout_height="110dp"
+            android:layout_height="wrap_content"
             android:foregroundGravity="fill"
             android:paddingBottom="40dp"
-            app:srcCompat="@drawable/logo" />
+            android:scaleType="fitCenter"
+            app:srcCompat="@mipmap/logonegro_foreground" />
 
         <TextView
             android:id="@+id/NombreUsuarioText"
