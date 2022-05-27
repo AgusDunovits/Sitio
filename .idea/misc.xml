@@ -12,8 +12,10 @@
         <entry key="..\:/Proyecto/SITIO/Proyecto/app/src/main/res/layout/fragment_fragmento_usuarioexterno.xml" value="0.371875" />
         <entry key="..\:/Users/Ignac/Documents/Personal/Ignacio/Sitio/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/Users/Ignac/Documents/Personal/Ignacio/Sitio/app/src/main/res/layout/activity_principal.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/Ignac/Documents/Personal/Ignacio/Sitio/app/src/main/res/layout/fragment_fragmento_casa.xml" value="0.25" />
+        <entry key="..\:/Users/Ignac/Documents/Personal/Ignacio/Sitio/app/src/main/res/layout/fragment_fragmento_casa.xml" value="0.264" />
         <entry key="..\:/Users/Ignac/Documents/Personal/Ignacio/Sitio/app/src/main/res/layout/fragment_fragmento_sugerencias.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/Ignac/Documents/Personal/Ignacio/Sitio/app/src/main/res/layout/fragment_fragmento_usuario.xml" value="0.2" />
+        <entry key="..\:/Users/Ignac/Documents/Personal/Ignacio/Sitio/app/src/main/res/layout/fragment_fragmento_usuarioexterno.xml" value="0.16259057971014493" />
       </map>
     </option>
   </component>
@@ -22,5 +24,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.4" />
+      </ProjectState>
+    </option>
   </component>
 </project>
