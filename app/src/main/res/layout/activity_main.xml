@@ -17,11 +17,9 @@
         <ImageView
             android:id="@+id/imageView5"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:foregroundGravity="fill"
-            android:paddingBottom="40dp"
-            android:scaleType="fitCenter"
-            app:srcCompat="@mipmap/logonegro_foreground" />
+            android:layout_height="114dp"
+            android:layout_marginBottom="25dp"
+            app:srcCompat="@mipmap/logo1" />
 
         <TextView
             android:id="@+id/NombreUsuarioText"

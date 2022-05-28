@@ -86,15 +86,15 @@ public class Fragmento_casa extends Fragment {
                 HSV_Historias.setVisibility(vista_inicio.GONE);
             } else {
                 for (int n = 0; n < cantidad_historias; n++) {
-                    String descripcion = "Historia\n" + String.valueOf(n);
+                    String descripcion = "Hist\n" + String.valueOf(n);
                     Button boton = new Button(vista_inicio.getContext());
                     boton.setText(descripcion);
                     boton.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
                     boton.setBackgroundColor(Color.parseColor("#FFFFFF"));
                     boton.setTextColor(Color.parseColor("#000000"));
                     LinearLayout.LayoutParams lp_boton = new LinearLayout.LayoutParams(
-                            LayoutParams.WRAP_CONTENT,
-                            LayoutParams.WRAP_CONTENT
+                            200,
+                            LayoutParams.MATCH_PARENT
                     );
                     boton.setBackgroundResource(R.drawable.btn_round);
                     lp_boton.setMargins(0, 18, 20, 0);
