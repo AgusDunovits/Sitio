@@ -126,7 +126,7 @@ public class Fragmento_casa extends Fragment {
                 LayoutParams.WRAP_CONTENT,LayoutParams.MATCH_PARENT, (float)8.0);
         LLLP_tvTitulo.setMargins(10,0,0,0);
         LinearLayout.LayoutParams LLLP_foto = new LinearLayout.LayoutParams(
-                LayoutParams.MATCH_PARENT, 700);
+                LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
         LLLP_foto.setMargins(0, 20, 0, 20);
 
         for (int x=0 ; x<int_publicaciones ; x++ ) {
