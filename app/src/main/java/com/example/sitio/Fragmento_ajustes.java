@@ -9,15 +9,14 @@ import androidx.fragment.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link Fragmento_usuario#newInstance} factory method to
+ * Use the {@link Fragmento_ajustes#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Fragmento_usuario extends Fragment {
+public class Fragmento_ajustes extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -28,7 +27,7 @@ public class Fragmento_usuario extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public Fragmento_usuario() {
+    public Fragmento_ajustes() {
         // Required empty public constructor
     }
 
@@ -38,20 +37,19 @@ public class Fragmento_usuario extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment Fragmento_usuario.
+     * @return A new instance of fragment Fragmento_ajustes.
      */
     // TODO: Rename and change types and number of parameters
-    public static Fragmento_usuario newInstance(String param1, String param2) {
-        Fragmento_usuario fragment = new Fragmento_usuario();
+    public static Fragmento_ajustes newInstance(String param1, String param2) {
+        Fragmento_ajustes fragment = new Fragmento_ajustes();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
-    private ImageView boton_provisional;
-    private ImageButton boton_ajustes;
 
+    private ImageView boton_volver_a_usuario;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,27 +64,18 @@ public class Fragmento_usuario extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_fragmento_usuario, container, false);
-        boton_ajustes = view.findViewById(R.id.boton_ajustes);
-        boton_provisional = view.findViewById(R.id.boton_provisional_para_externo);
-        boton_ajustes.setOnClickListener(new View.OnClickListener() {
+        View view = inflater.inflate(R.layout.fragment_fragmento_ajustes, container, false);
+        boton_volver_a_usuario = view.findViewById(R.id.boton_volver_a_usuario);
+        boton_volver_a_usuario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction transicion = fragmentManager.beginTransaction();
-                transicion.replace(R.id.Ventana_principal, new Fragmento_ajustes());
+                transicion.replace(R.id.Ventana_principal, new Fragmento_usuario());
                 transicion.commit();
             }
         });
-        boton_provisional.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                FragmentTransaction transicion = fragmentManager.beginTransaction();
-                transicion.replace(R.id.Ventana_principal, new Fragmento_usuarioexterno());
-                transicion.commit();
-            }
-        });
+
         return view;
     }
 }
