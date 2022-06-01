@@ -16,7 +16,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="45dp"
-            android:background="#FFB95A"
+            android:background="#FFC474"
             android:orientation="horizontal">
 
             <ImageView
@@ -61,7 +61,7 @@
 
         <HorizontalScrollView
             android:id="@+id/HSV_pantalla"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <LinearLayout

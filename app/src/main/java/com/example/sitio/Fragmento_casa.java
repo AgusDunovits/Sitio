@@ -10,10 +10,12 @@ import androidx.fragment.app.Fragment;
 
 import android.text.Layout;
 import android.util.Log;
+import android.view.DragEvent;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageButton;
@@ -40,6 +42,9 @@ public class Fragmento_casa extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private int int_scrollX = 0;
+    private HorizontalScrollView HSV_pantalla;
+    Long tsLong = 0L;
 
     public Fragmento_casa() {
         // Required empty public constructor
@@ -73,6 +78,7 @@ public class Fragmento_casa extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
 
     @Override
@@ -80,7 +86,7 @@ public class Fragmento_casa extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View vista_inicio = inflater.inflate(R.layout.fragment_fragmento_casa, container, false);
-
+        HSV_pantalla = vista_inicio.findViewById(R.id.HSV_pantalla);
         ///HISTORIAS
         int int_historias = (int)Math.floor(Math.random()*(10)+0);
         LinearLayout LL_historias = vista_inicio.findViewById(R.id.LL_historias);
@@ -223,81 +229,43 @@ public class Fragmento_casa extends Fragment {
             LL_publicacion.addView(SV_publicacion);
 
             LL_separador.addView(LL_publicacion);
+            /*vista_inicio.setOnDragListener(new View.OnDragListener() {
+                @Override
+                public boolean onDrag(View v, DragEvent event) {
+                    int int_evento = event.getAction();
+                    Log.d("DEBUG", "DRAG-STARTED");
+                    switch(int_evento) {
+                        case DragEvent.ACTION_DRAG_STARTED: {
+                            Log.d("DEBUG", "DRAG-STARTED");
+                        }
+                        case DragEvent.ACTION_DRAG_LOCATION: {
+                            Log.d("DEBUG", "DRAG_LOCATION: " + HSV_pantalla.getScrollX());
+                        }
+                    }
+                    return true;
+                }
+            });
         }
+        HSV_pantalla.getViewTreeObserver().addOnScrollChangedListener(new ViewTreeObserver.OnScrollChangedListener() {
+            @Override
+            public void onScrollChanged() {
+                Long Long_temp = System.currentTimeMillis()/1000;
+                if(Long_temp-tsLong>1 ) {
+                    tsLong = Long_temp;
+                    int temp_scrollX = HSV_pantalla.getScrollX(); // For HorizontalScrollView
+                    Log.d("DEBUG","Scroll: " + temp_scrollX);
+                    Log.d("DEBUG","Tiempo: " + tsLong.toString());
+                }
 
-        /*
-                    /// IMAGEN PUBLICADA
-                    TextView textView_imagen = new TextView(LL_publicacion.getContext());
-                    textView_imagen.setText("IMAGEN");
-                    textView_imagen.setGravity(Gravity.CENTER);
-                    textView_imagen.setTextSize(60);
-                    textView_imagen.setTextColor(Color.BLACK);
-                    textView_imagen.setBackgroundColor(Color.parseColor("#F4F4F4"));
-                    LinearLayout.LayoutParams lp_imagen = new LinearLayout.LayoutParams(
-                            LayoutParams.MATCH_PARENT,
-                            800
-                    );
-                    textView_imagen.setLayoutParams(lp_imagen);
-                    LL_publicacion.addView(textView_imagen);
-                    /// BARRA PIE PUBLICACION
-                    LinearLayout LL_piePublicacion = new LinearLayout(LL_publicacion.getContext());
-                    LL_piePublicacion.setOrientation(LinearLayout.HORIZONTAL);
-                    LinearLayout.LayoutParams lp_piePublicacion = new LinearLayout.LayoutParams(
-                            LayoutParams.MATCH_PARENT,
-                            100
-                    );
-                    LL_piePublicacion.setLayoutParams(lp_piePublicacion);
-                    LL_piePublicacion.setBackgroundColor(Color.TRANSPARENT);
-                        /// ORDENADOR FAKE 1
-                        TextView TV_fake1 = new TextView(LL_publicacion.getContext());
-                        TV_fake1.setBackgroundColor(Color.TRANSPARENT);
-                        TV_fake1.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.MATCH_PARENT,(float) 2.0));
-                        LL_piePublicacion.addView(TV_fake1);
-                        /// BOTON MENSAJE PRIVADO
-                        TextView TV_mensajePrivado = new TextView(LL_publicacion.getContext());
-                        TV_mensajePrivado.setText("MSJ\nPRIV");
-                        TV_mensajePrivado.setGravity(Gravity.CENTER);
-                        TV_mensajePrivado.setTextColor(Color.BLACK);
-                        TV_mensajePrivado.setBackgroundColor(Color.parseColor("#C1F4F6"));
-                        TV_mensajePrivado.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.MATCH_PARENT,(float) 2.0));
-                        LL_piePublicacion.addView(TV_mensajePrivado);
-                        /// TEXTO CANTIDAD FOTOS
-                        TextView TV_cantidadFotos = new TextView(LL_publicacion.getContext());
-                        String cantidadFotos = "";
-                        for (int x = 0; x < cantidad_fotos ; x++){cantidadFotos+="o ";};
-                        TV_cantidadFotos.setText(cantidadFotos);
-                        TV_cantidadFotos.setGravity(Gravity.CENTER);
-                        TV_cantidadFotos.setTextColor(Color.BLACK);
-                        TV_cantidadFotos.setTextSize(20);
-                        TV_cantidadFotos.setBackgroundColor(Color.TRANSPARENT);
-                        TV_cantidadFotos.setLayoutParams(new LinearLayout.LayoutParams(50,LayoutParams.MATCH_PARENT,(float) 12.0));
-                        LL_piePublicacion.addView(TV_cantidadFotos);
-                        /// BOTON VER MSJ
-                        TextView TV_verMensajes = new TextView(LL_publicacion.getContext());
-                        TV_verMensajes.setText("VER\nMSJ");
-                        TV_verMensajes.setGravity(Gravity.CENTER);
-                        TV_verMensajes.setTextColor(Color.BLACK);
-                        TV_verMensajes.setBackgroundColor(Color.parseColor("#C1F4F6"));
-                        TV_verMensajes.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.MATCH_PARENT,(float) 2.0));
-                        LL_piePublicacion.addView(TV_verMensajes);
-                        /// BOTON DAR LIKE
-                        TextView TV_darLike = new TextView(LL_publicacion.getContext());
-                        TV_darLike.setText("LIKE");
-                        TV_darLike.setGravity(Gravity.CENTER);
-                        TV_darLike.setTextColor(Color.BLACK);
-                        TV_darLike.setBackgroundColor(Color.parseColor("#C1F4F6"));
-                        LinearLayout.LayoutParams lp_darLike = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.MATCH_PARENT,(float) 2.0);
-                        lp_darLike.setMargins(15,0,0,0);
-                        TV_darLike.setLayoutParams(lp_darLike);
-                        LL_piePublicacion.addView(TV_darLike);
-                        /// ORDENADOR FAKE 2
-                        TextView TV_fake2 = new TextView(LL_publicacion.getContext());
-                        TV_fake2.setBackgroundColor(Color.TRANSPARENT);
-                        TV_fake2.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.MATCH_PARENT,(float) 4.0));
-                        LL_piePublicacion.addView(TV_fake2);
-                    LL_publicacion.addView(LL_piePublicacion);
-                LL_layoutPublicacion.addView(LL_publicacion);
-            };*/
+                /*if( temp_scrollX>int_scrollX ) {
+                    int_scrollX = int_screenWidth+(int_screenWidth*(temp_scrollX/int_screenWidth));
+                } else {
+                    if( temp_scrollX<int_scrollX ) int_scrollX = -int_screenWidth-(int_screenWidth*(temp_scrollX/int_screenWidth));
+                }
+                HSV_pantalla.setScrollX(int_scrollX);
+            }
+        });*/
+
         return vista_inicio;
     }
 }
