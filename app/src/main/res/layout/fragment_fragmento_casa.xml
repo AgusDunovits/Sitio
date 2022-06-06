@@ -6,16 +6,56 @@
     android:layout_height="match_parent"
     tools:context=".Fragmento_casa">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="#FFFFFF"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <HorizontalScrollView
+                android:id="@+id/HSV_pantalla"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:id="@+id/LL_separador"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <ScrollView
+                        android:id="@+id/SV_historias"
+                        android:layout_width="80dp"
+                        android:layout_height="match_parent"
+                        android:background="#FFFFFF">
+
+                        <LinearLayout
+                            android:id="@+id/LL_historias"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:paddingTop="10dp"></LinearLayout>
+                    </ScrollView>
+
+                </LinearLayout>
+            </HorizontalScrollView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
             android:layout_height="45dp"
-            android:background="#FFB95A"
-            android:orientation="horizontal">
+            android:background="#FFBC60"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent">
 
             <ImageView
                 android:id="@+id/imageView2"
@@ -24,7 +64,7 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="3dp"
                 android:layout_weight="1"
-                android:scaleType="centerInside"
+                android:scaleType="center"
                 android:src="@mipmap/logo1" />
 
             <TextView
@@ -56,34 +96,6 @@
                 android:src="@drawable/button_notificacion" />
 
         </LinearLayout>
-
-        <HorizontalScrollView
-            android:id="@+id/HSV_historias"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:background="#FFFFFF">
-
-            <LinearLayout
-                android:id="@+id/LayoutHistorias"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:baselineAligned="false"
-                android:orientation="horizontal"
-                android:paddingLeft="5dp"
-                android:scrollbarAlwaysDrawHorizontalTrack="false"></LinearLayout>
-        </HorizontalScrollView>
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <LinearLayout
-                android:id="@+id/layout_publicacion"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:baselineAligned="false"
-                android:orientation="vertical" />
-        </ScrollView>
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>
