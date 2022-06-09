@@ -89,13 +89,19 @@ public class Fragmento_casa extends Fragment {
         @Override
         public void run() {
             Long Long_temp = System.currentTimeMillis()/300;
+            int int_anchoHistoria = Math.round(TypedValue.applyDimension(
+                    TypedValue.COMPLEX_UNIT_DIP, 80,r.getDisplayMetrics()));
             if(Long_temp-tsLong>1 ) {
                 if(!runActivo) {
                     tsLong = Long_temp;
                     int temp_scrollX = HSV_pantalla.getScrollX();
-                    int int_anchoPromedio = temp_scrollX + (int)(int_screenWidth / 2);
-                    int int_posicionScroll = int_anchoPromedio/int_screenWidth;
-                    int int_moverA = int_posicionScroll * int_screenWidth;
+                    int int_moverA = 0;
+
+                    if(temp_scrollX >= int_anchoHistoria) {
+                        int int_anchoPromedio = temp_scrollX + (int)(int_screenWidth / 2) - int_anchoHistoria;
+                        int int_posicionScroll = int_anchoPromedio/int_screenWidth;
+                        int_moverA = int_anchoHistoria + (int_posicionScroll * int_screenWidth);
+                    }
                     Log.d("DEBUG",String.valueOf(int_moverA));
                     HSV_pantalla.smoothScrollTo(int_moverA, 0);
                     runActivo = true;
@@ -113,31 +119,36 @@ public class Fragmento_casa extends Fragment {
         // Inflate the layout for this fragment
         r = getResources();
         int_screenWidth = r.getDisplayMetrics().widthPixels;
+        int int_margenHistoria = Math.round(TypedValue.applyDimension(
+                TypedValue.COMPLEX_UNIT_DIP, 8,r.getDisplayMetrics()));
 
         View vista_inicio = inflater.inflate(R.layout.fragment_fragmento_casa, container, false);
         HSV_pantalla = vista_inicio.findViewById(R.id.HSV_pantalla);
         ///HISTORIAS
-        int int_historias = (int)Math.floor(Math.random()*(0)+0);
+        int int_historias = (int)Math.floor(Math.random()*(10)+1);
+        String String_colorHistoria[] = {"#FFC6C6","#FFE6C6","#FFFEC6","#E4FFC6","#C6FFFE","#C6CEFF","#EFC6FF","#FFC6EE"};
         LinearLayout LL_historias = vista_inicio.findViewById(R.id.LL_historias);
+        int int_anchoHistoria = LL_historias.getWidth();
         LinearLayout.LayoutParams LLLP_botonHistorias = new LinearLayout.LayoutParams(
                 LayoutParams.MATCH_PARENT,
                 160
         );
-        LLLP_botonHistorias.setMargins(0,0,0,15);
+        LLLP_botonHistorias.setMargins(0,0,int_margenHistoria,15);
 
         if( int_historias==0 ){
             ScrollView SV_historias = vista_inicio.findViewById(R.id.SV_historias);
             SV_historias.setVisibility(vista_inicio.GONE);
         } else {
             for (int n = 0; n < int_historias; n++) {
+                int int_colorHistoria = (int)Math.floor(Math.random()*(8)+0);
                 String String_tituloBoton = "His..\n" + String.valueOf(n);
                 Button Button_historiaN = new Button(LL_historias.getContext());
                 Button_historiaN.setText(String_tituloBoton);
                 Button_historiaN.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-                Button_historiaN.setBackgroundColor(Color.TRANSPARENT);
+                Button_historiaN.setBackgroundColor(Color.parseColor(String_colorHistoria[int_colorHistoria]));
                 Button_historiaN.setTextColor(Color.parseColor("#000000"));
                 Button_historiaN.setLayoutParams(LLLP_botonHistorias);
-                Button_historiaN.setBackgroundResource(R.drawable.historia);
+                //Button_historiaN.setBackgroundResource(R.drawable.historia);
                 LL_historias.addView(Button_historiaN);
             }
         }
@@ -196,7 +207,7 @@ public class Fragmento_casa extends Fragment {
             TV_titulo.setLayoutParams(LLLP_tvTitulo);
             LL_titulo.addView(TV_titulo);
             /// CANTIDAD FOTOS
-            String String_CantidadFotos = "FOTOS\n(" + String.valueOf(int_fotos) + ")";
+            String String_CantidadFotos = "Fotos\n(" + String.valueOf(int_fotos) + ")";
             TextView TV_cantidadFotos = new TextView(LL_titulo.getContext());
             TV_cantidadFotos.setBackgroundColor(Color.TRANSPARENT);
             TV_cantidadFotos.setText(String_CantidadFotos);
@@ -231,11 +242,7 @@ public class Fragmento_casa extends Fragment {
             LL_divisionFotos.setBackgroundColor(Color.TRANSPARENT);
             LL_divisionFotos.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
             /// DESCRIPCIÓN
-            int int_descripcion = (int) Math.floor(Math.random() * (4) + 0);
-            String String_descripcion = "Descripción";
-            for (int f = 0; f < int_descripcion; f++) {
-                String_descripcion += "\n. . . .";
-            }
+            String String_descripcion = "Descripción\n. . . .\n. . . .";
             TextView TV_descripcion = new TextView(LL_titulo.getContext());
             TV_descripcion.setBackgroundColor(Color.TRANSPARENT);
             TV_descripcion.setText(String_descripcion);
@@ -245,13 +252,17 @@ public class Fragmento_casa extends Fragment {
             TV_descripcion.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
             LL_divisionFotos.addView(TV_descripcion);
             for (int n = 0; n < int_fotos; n++) {
+                int int_foto = (int)Math.floor(Math.random()*(4)+0);
                 LinearLayout LL_foto = new LinearLayout(LL_divisionFotos.getContext());
                 LL_foto.setOrientation(LinearLayout.VERTICAL);
                 LL_foto.setBackgroundColor(Color.TRANSPARENT);
                 LL_foto.setLayoutParams(LLLP_foto);
                 /// FOTO
                 ImageView IV_foto = new ImageView(LL_titulo.getContext());
-                IV_foto.setImageResource(R.drawable.foto);
+                if(int_foto==0)IV_foto.setImageResource(R.drawable.foto);
+                if(int_foto==1)IV_foto.setImageResource(R.drawable.foto1);
+                if(int_foto==2)IV_foto.setImageResource(R.drawable.foto2);
+                if(int_foto==3)IV_foto.setImageResource(R.drawable.foto3);
                 IV_foto.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT, (float) 1.0));
                 LL_foto.addView(IV_foto);
 
