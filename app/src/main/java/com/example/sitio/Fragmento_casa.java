@@ -170,8 +170,8 @@ public class Fragmento_casa extends Fragment {
                 LayoutParams.MATCH_PARENT, int_alturaTitulo);
         LLLP_titulo.setMargins(0,0,0,10);
         LinearLayout.LayoutParams LLLP_tvTitulo = new LinearLayout.LayoutParams(
-                LayoutParams.WRAP_CONTENT,LayoutParams.MATCH_PARENT, (float)8.0);
-        LLLP_tvTitulo.setMargins(10,0,0,0);
+                LayoutParams.WRAP_CONTENT,LayoutParams.MATCH_PARENT);
+        LLLP_tvTitulo.setMargins(0,0,0,0);
         LinearLayout.LayoutParams LLLP_foto = new LinearLayout.LayoutParams(
                 LayoutParams.MATCH_PARENT, int_alturaFoto);
         LLLP_foto.setMargins(0, 0, 0, 5);
@@ -194,20 +194,39 @@ public class Fragmento_casa extends Fragment {
             /// IMAGEN PERFIL
             ImageView IV_perfil = new ImageView(LL_titulo.getContext());
             IV_perfil.setImageResource(R.drawable.imagenperfil);
-            IV_perfil.setLayoutParams(new LinearLayout.LayoutParams(170, LayoutParams.MATCH_PARENT, (float) 1.0));
+            IV_perfil.setLayoutParams(new LinearLayout.LayoutParams(120, LayoutParams.MATCH_PARENT));
             LL_titulo.addView(IV_perfil);
-            /// NOMBRE PERFIL
+            /// BARRA NOMBRE + LUGAR
+            LinearLayout LL_informacion = new LinearLayout(LL_titulo.getContext());
+            LL_informacion.setOrientation(LinearLayout.VERTICAL);
+            LL_informacion.setLayoutParams(LLLP_tvTitulo);
+            LL_informacion.setBackgroundColor(Color.TRANSPARENT);
+                /// NOMBRE PERFIL
             TextView TV_titulo = new TextView(LL_titulo.getContext());
             TV_titulo.setBackgroundColor(Color.TRANSPARENT);
             TV_titulo.setText(String_Personas[int_persona]);
             TV_titulo.setTextSize(16);
             TV_titulo.setTextColor(Color.BLACK);
             TV_titulo.setTypeface(null, Typeface.BOLD);
-            TV_titulo.setGravity(Gravity.BOTTOM);
-            TV_titulo.setLayoutParams(LLLP_tvTitulo);
-            LL_titulo.addView(TV_titulo);
-            /// CANTIDAD FOTOS
-            String String_CantidadFotos = "Fotos\n(" + String.valueOf(int_fotos) + ")";
+            TV_titulo.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+            LL_informacion.addView(TV_titulo);
+                /// LUGAR PERFIL
+            TextView TV_lugar = new TextView(LL_titulo.getContext());
+            TV_lugar.setBackgroundColor(Color.TRANSPARENT);
+            TV_lugar.setText(String_Lugares[int_lugar]);
+            TV_lugar.setTextSize(15);
+            TV_lugar.setTextColor(Color.BLACK);
+            TV_lugar.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+            LL_informacion.addView(TV_lugar);
+            LL_titulo.addView(LL_informacion);
+
+            /// BARRA FOTOS + BOTONES
+            LinearLayout LL_opciones = new LinearLayout(LL_titulo.getContext());
+            LL_opciones.setOrientation(LinearLayout.VERTICAL);
+            LL_opciones.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT));
+            LL_opciones.setBackgroundColor(Color.TRANSPARENT);
+                /// CANTIDAD FOTOS
+            String String_CantidadFotos = "Fotos(" + String.valueOf(int_fotos) + ")";
             TextView TV_cantidadFotos = new TextView(LL_titulo.getContext());
             TV_cantidadFotos.setBackgroundColor(Color.TRANSPARENT);
             TV_cantidadFotos.setText(String_CantidadFotos);
@@ -215,24 +234,52 @@ public class Fragmento_casa extends Fragment {
             TV_cantidadFotos.setTextColor(Color.BLACK);
             TV_cantidadFotos.setTypeface(null, Typeface.BOLD);
             TV_cantidadFotos.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.CENTER);
-            TV_cantidadFotos.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT, (float) 8.0));
-            LL_titulo.addView(TV_cantidadFotos);
-            /// MAS OPCIONES
+            TV_cantidadFotos.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
+            LL_opciones.addView(TV_cantidadFotos);
+                /// BARRA BOTONES
+            LinearLayout LL_botones = new LinearLayout(LL_opciones.getContext());
+            LL_botones.setOrientation(LinearLayout.HORIZONTAL);
+            LL_botones.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
+            LL_botones.setBackgroundColor(Color.TRANSPARENT);
+                    /// BOTON FAKE1
+            Button Button_fake1 = new Button(LL_botones.getContext());
+            Button_fake1.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, (float) 4.0));
+            Button_fake1.setBackgroundColor(Color.TRANSPARENT);
+            LL_botones.addView(Button_fake1);
+                    /// BOTON MSJ PRIVADO
+            Button Button_msjPrivado = new Button(LL_botones.getContext());
+            Button_msjPrivado.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, (float) 5.0));
+            Button_msjPrivado.setBackgroundResource(R.drawable.button_msjprivado);
+            LL_botones.addView(Button_msjPrivado);
+                    /// BOTON MSJ PRIVADO
+            Button Button_quieroIr = new Button(LL_botones.getContext());
+            Button_quieroIr.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, (float) 5.0));
+            Button_quieroIr.setBackgroundResource(R.drawable.button_quieroir);
+            LL_botones.addView(Button_quieroIr);
+                    /// BOTON VER MENSAJES
+            Button Button_verMensajes = new Button(LL_botones.getContext());
+            Button_verMensajes.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, (float) 5.0));
+            Button_verMensajes.setBackgroundResource(R.drawable.button_chat);
+            LL_botones.addView(Button_verMensajes);
+                    /// BOTON LIKE
+            Button Button_like = new Button(LL_botones.getContext());
+            Button_like.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, (float) 5.0));
+            Button_like.setBackgroundResource(R.drawable.button_unlike);
+            LL_botones.addView(Button_like);
+                    /// MAS OPCIONES
             ImageView IV_masOpciones = new ImageView(LL_titulo.getContext());
             IV_masOpciones.setImageResource(R.drawable.masopciones);
-            IV_masOpciones.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT, (float) 1.0));
-            LL_titulo.addView(IV_masOpciones);
+            IV_masOpciones.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, (float) 1.0));
+            LL_botones.addView(IV_masOpciones);
+                    /// BOTON FAKE2
+            Button Button_fake2 = new Button(LL_botones.getContext());
+            Button_fake2.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, (float) 4.0));
+            Button_fake2.setBackgroundColor(Color.TRANSPARENT);
+            LL_botones.addView(Button_fake2);
+
+            LL_opciones.addView(LL_botones);
+            LL_titulo.addView(LL_opciones);
             LL_publicacion.addView(LL_titulo);
-            /// BARRA NOMBRE LUGAR
-            TextView TV_lugar = new TextView(LL_titulo.getContext());
-            TV_lugar.setBackgroundColor(Color.parseColor("#414141"));
-            TV_lugar.setText(String_Lugares[int_lugar]);
-            TV_lugar.setTextSize(18);
-            TV_lugar.setTextColor(Color.WHITE);
-            TV_lugar.setTypeface(null, Typeface.BOLD);
-            TV_lugar.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.CENTER);
-            TV_lugar.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
-            LL_publicacion.addView(TV_lugar);
             /// PANTALLA SCROLL DE FOTOS
             ScrollView SV_publicacion = new ScrollView(LL_publicacion.getContext());
             SV_publicacion.setLayoutParams(LLLP_publicacionScroll);
@@ -246,8 +293,10 @@ public class Fragmento_casa extends Fragment {
             TextView TV_descripcion = new TextView(LL_titulo.getContext());
             TV_descripcion.setBackgroundColor(Color.TRANSPARENT);
             TV_descripcion.setText(String_descripcion);
-            TV_descripcion.setTextSize(16);
-            TV_descripcion.setPadding(15, 0, 0, 10);
+            TV_descripcion.setTextSize(14);
+            TV_descripcion.setGravity(Gravity.CENTER_HORIZONTAL);
+            TV_descripcion.setTypeface(null, Typeface.BOLD);
+            TV_descripcion.setPadding(20, 5, 0, 10);
             TV_descripcion.setTextColor(Color.BLACK);
             TV_descripcion.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
             LL_divisionFotos.addView(TV_descripcion);

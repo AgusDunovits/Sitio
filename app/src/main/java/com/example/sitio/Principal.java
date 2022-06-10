@@ -33,9 +33,9 @@ public class Principal extends AppCompatActivity {
         actionBar.hide();   // ESCONDER
         //
         barra_boton[0] = findViewById(R.id.boton_casa);
-        barra_boton[1] = findViewById(R.id.boton_sugerencias);
+        barra_boton[1] = findViewById(R.id.boton_buscar);
         barra_boton[2] = findViewById(R.id.boton_mapa);
-        barra_boton[3] = findViewById(R.id.boton_buscar);
+        barra_boton[3] = findViewById(R.id.boton_sugerencias);
         barra_boton[4] = findViewById(R.id.boton_usuario);
         cambiar_fragmentos(Fragmentos[0]);
 
