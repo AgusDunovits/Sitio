@@ -221,6 +221,7 @@ public class Fragmento_casa extends Fragment {
 
             // Tabla vertical para contenido scrolleable
             LinearLayout LL_division = new LinearLayout(SV_publicacion.getContext());
+            LL_division.setPadding(25,35,25,35);
             LL_division.setOrientation(LinearLayout.VERTICAL);
             LL_division.setBackgroundColor(Color.TRANSPARENT);
             LL_division.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
@@ -237,17 +238,23 @@ public class Fragmento_casa extends Fragment {
             Button_masOpciones.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT));
             CL_barraTitulo.addView(Button_masOpciones);*/
 
+            LinearLayout.LayoutParams LLLP_foto = new LinearLayout.LayoutParams(
+                    LayoutParams.MATCH_PARENT, int_alturaFoto
+            );
+            LLLP_foto.setMargins(0,25,0,0);
+
             for (int n = 0; n < int_fotos; n++) {
                 int int_foto = (int)Math.floor(Math.random()*(4)+0);
-
                 /// Foto
                 ImageView IV_foto = new ImageView(LL_division.getContext());
                 if(int_foto==0)IV_foto.setImageResource(R.drawable.foto);
                 if(int_foto==1)IV_foto.setImageResource(R.drawable.foto1);
                 if(int_foto==2)IV_foto.setImageResource(R.drawable.foto2);
                 if(int_foto==3)IV_foto.setImageResource(R.drawable.foto3);
-                IV_foto.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, int_alturaFoto));
+                if(n>0)IV_foto.setLayoutParams(LLLP_foto);
+                if(n==0)IV_foto.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, int_alturaFoto));
                 LL_division.addView(IV_foto);
+
             }
 
             // Tabla horizontal para barra de titulo
@@ -311,7 +318,7 @@ public class Fragmento_casa extends Fragment {
             LinearLayout LL_botonera = new LinearLayout(LL_titulo.getContext());
             LL_botonera.setId(View.generateViewId());
             LL_botonera.setOrientation(LinearLayout.HORIZONTAL);
-            LL_botonera.setPadding(0,35,10,0);
+            LL_botonera.setPadding(0,45,10,0);
             LL_botonera.setLayoutParams(new LinearLayout.LayoutParams(200,LayoutParams.MATCH_PARENT, (float) 5.0));
             LL_botonera.setBackgroundColor(Color.TRANSPARENT);
             LL_titulo.addView(LL_botonera);
