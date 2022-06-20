@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 public class Principal extends AppCompatActivity {
 
@@ -22,7 +23,7 @@ public class Principal extends AppCompatActivity {
             new Fragmento_usuario()
     };
     private Boolean[] boton_active = {true,false,false,false,false};
-    private Button[] barra_boton = new Button[5];
+    private ImageButton[] barra_boton = new ImageButton[5];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,7 +80,7 @@ public class Principal extends AppCompatActivity {
                 barra_boton[n].setBackgroundColor(Color.parseColor("#FBA934"));
             } else {
                 if(boton_active[n]) {
-                    barra_boton[n].setBackgroundColor(Color.parseColor("#DABD94"));
+                    barra_boton[n].setBackgroundColor(Color.parseColor("#FFB95A"));
                 }
                 boton_active[n] = false;
             }

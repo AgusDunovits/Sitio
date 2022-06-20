@@ -9,58 +9,53 @@
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="0dp"
-        android:layout_height="59dp"
-        android:background="#606060"
+        android:layout_height="45dp"
+        android:background="#FFB95A"
         android:gravity="bottom"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <Button
+        <ImageButton
             android:id="@+id/boton_casa"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:backgroundTint="#FBA934"
-            android:text="INI\nCIO"
-            android:textColor="#000000" />
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#FBA934"
+            app:srcCompat="@drawable/button_inicio" />
 
-        <Button
+        <ImageButton
             android:id="@+id/boton_buscar"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:text="BUS\nCAR"
-            android:backgroundTint="#DABD94"
-            android:textColor="#000000" />
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#00FFFFFF"
+            app:srcCompat="@drawable/button_buscar" />
 
-        <Button
+        <ImageButton
             android:id="@+id/boton_mapa"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:backgroundTint="#DABD94"
-            android:text="MA\nPA"
-            android:textColor="#000000" />
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#00FFFFFF"
+            app:srcCompat="@drawable/button_mapa" />
 
-        <Button
+        <ImageButton
             android:id="@+id/boton_sugerencias"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:text="PUBLI\nCAR"
-            android:backgroundTint="#DABD94"
-            android:textColor="#000000" />
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#00FFFFFF"
+            app:srcCompat="@drawable/button_publicar" />
 
-        <Button
+        <ImageButton
             android:id="@+id/boton_usuario"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:backgroundTint="#DABD94"
-            android:text="PER\nFIL"
-            android:textColor="#000000" />
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#00FFFFFF"
+            app:srcCompat="@drawable/button_perfil" />
 
     </LinearLayout>
 
