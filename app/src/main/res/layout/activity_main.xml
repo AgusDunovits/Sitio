@@ -9,6 +9,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#FFFFFF"
         android:gravity="center"
         android:orientation="vertical"
         tools:layout_editor_absoluteX="0dp"
@@ -17,8 +18,8 @@
         <ImageView
             android:id="@+id/imageView5"
             android:layout_width="match_parent"
-            android:layout_height="114dp"
-            android:layout_marginBottom="25dp"
+            android:layout_height="65dp"
+            android:layout_marginBottom="50dp"
             app:srcCompat="@mipmap/logo1" />
 
         <TextView
@@ -52,11 +53,11 @@
             android:id="@+id/Pasar"
             android:layout_width="122dp"
             android:layout_height="58dp"
-            android:backgroundTint="#FFB547"
+            android:backgroundTint="#F3F3F3"
             android:backgroundTintMode="add"
             android:hapticFeedbackEnabled="true"
             android:text="Ingresar"
-            android:textColor="#000000" />
+            android:textColor="#FF9A11" />
 
         <TextView
             android:id="@+id/OlvidasteClaveText"
@@ -78,11 +79,11 @@
             android:id="@+id/button_crearCuenta"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="#FFD291"
+            android:backgroundTint="#FFF3F3F3"
             android:backgroundTintMode="add"
             android:hapticFeedbackEnabled="true"
             android:text="Crear"
-            android:textColor="#000000" />
+            android:textColor="#FF9A11" />
 
     </LinearLayout>
 

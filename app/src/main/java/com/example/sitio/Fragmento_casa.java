@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.media.Image;
 import android.os.Bundle;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -18,6 +19,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.HorizontalScrollView;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.GridLayout.LayoutParams;
@@ -81,7 +83,7 @@ public class Fragmento_casa extends Fragment {
                      * Log.d("onTouch","Diferencia de tiempos: "+posicionX_soltarClick);
                      */
                     int posicionScroll = 0;
-                    if( tiempo_soltarClick-tiempo_primerClick <= 1 ) {
+                    if( tiempo_soltarClick-tiempo_primerClick == 0 ) {
                         /** Log.d("onTouch","El tipo de scroll fue deslice"); */
                         minimoScroll = 10;
                     } else {
@@ -152,6 +154,10 @@ public class Fragmento_casa extends Fragment {
         String[] String_Personas = {"Darío","Camila","Facundo","Ignacio","Agus"};
         int int_publicaciones = (int)Math.floor(Math.random()*(5)+2);
         int int_alturaTitulo = Math.round(TypedValue.applyDimension(
+                TypedValue.COMPLEX_UNIT_DIP, 60, r.getDisplayMetrics()));
+        int int_alturaBarra = Math.round(TypedValue.applyDimension(
+                TypedValue.COMPLEX_UNIT_DIP, 70, r.getDisplayMetrics()));
+        int int_alturaDefecto = Math.round(TypedValue.applyDimension(
                 TypedValue.COMPLEX_UNIT_DIP, 50, r.getDisplayMetrics()));
         int int_alturaFoto = Math.round(TypedValue.applyDimension(
                 TypedValue.COMPLEX_UNIT_DIP, 380, r.getDisplayMetrics()));
@@ -205,6 +211,7 @@ public class Fragmento_casa extends Fragment {
             LL_barraSuperior.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, int_alturaTitulo));
             LL_barraSuperior.setPadding(5, 5, 0, 0);
             LL_barraSuperior.setBackgroundColor(Color.WHITE);
+            LL_barraSuperior.setBackgroundResource(R.drawable.botonerainferior);
             CL_pubYbarra.addView(LL_barraSuperior);
 
             // Imagen de perfil
@@ -229,7 +236,8 @@ public class Fragmento_casa extends Fragment {
             TV_titulo.setTextSize(16);
             TV_titulo.setTextColor(Color.BLACK);
             TV_titulo.setTypeface(null, Typeface.BOLD);
-            TV_titulo.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+            TV_titulo.setGravity(Gravity.BOTTOM);
+            TV_titulo.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, 0,1));
             LL_informacion.addView(TV_titulo);
 
             // Lugar visitado
@@ -238,7 +246,8 @@ public class Fragmento_casa extends Fragment {
             TV_lugar.setText(String_Lugares[int_lugar]);
             TV_lugar.setTextSize(15);
             TV_lugar.setTextColor(Color.BLACK);
-            TV_lugar.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+            TV_lugar.setGravity(Gravity.TOP);
+            TV_lugar.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, 0,1));
             LL_informacion.addView(TV_lugar);
 
             // Cantidad de fotos
@@ -306,24 +315,26 @@ public class Fragmento_casa extends Fragment {
             LinearLayout LL_titulo = new LinearLayout(CL_pubYbarra.getContext());
             LL_titulo.setId(View.generateViewId());
             LL_titulo.setOrientation(LinearLayout.HORIZONTAL);
-            LL_titulo.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, int_alturaTitulo));
+            LL_titulo.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, int_alturaBarra));
             LL_titulo.setPadding(15, 5, 0, 0);
             LL_titulo.setBackgroundColor(Color.WHITE);
+            LL_titulo.setBackgroundResource(R.drawable.botonerasuperior);
             CL_pubYbarra.addView(LL_titulo);
 
 
             // Descripcion publicacion
-            String String_descripcion = "Descripción\n. . . .";
+            String String_descripcion = "Ya no se si lo que escribo supera la division de la descripción asi que aqui dejo algunas palabras random para probarlo y asi generar el evento de error.";
+            if(String_descripcion.length()>120)String_descripcion = String_descripcion.substring(0,120);
             TextView TV_descripcion = new TextView(CL_pubYbarra.getContext());
             TV_descripcion.setId(View.generateViewId());
             TV_descripcion.setBackgroundColor(Color.TRANSPARENT);
             TV_descripcion.setText(String_descripcion);
-            TV_descripcion.setTextSize(14);
-            TV_descripcion.setTypeface(null, Typeface.ITALIC|Typeface.BOLD);
+            TV_descripcion.setTextSize(11);
+            TV_descripcion.setTypeface(Typeface.MONOSPACE, Typeface.ITALIC|Typeface.BOLD);
             TV_descripcion.setTextColor(Color.BLACK);
-            TV_descripcion.setPadding(0,5,10,0);
+            TV_descripcion.setPadding(0,5,35,0);
             LinearLayout.LayoutParams LLLP_tvDescripcion = new LinearLayout.LayoutParams(
-                    LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT,13
+                    0, LayoutParams.MATCH_PARENT,1
             );
             TV_descripcion.setLayoutParams(LLLP_tvDescripcion);
             LL_titulo.addView(TV_descripcion);
@@ -332,33 +343,41 @@ public class Fragmento_casa extends Fragment {
             LinearLayout LL_botonera = new LinearLayout(LL_titulo.getContext());
             LL_botonera.setId(View.generateViewId());
             LL_botonera.setOrientation(LinearLayout.HORIZONTAL);
-            LL_botonera.setPadding(0,20,10,30);
-            LL_botonera.setLayoutParams(new LinearLayout.LayoutParams(180,LayoutParams.MATCH_PARENT, (float) 5.0));
+            LL_botonera.setLayoutParams(new LinearLayout.LayoutParams(0,int_alturaDefecto, 1));
             LL_botonera.setBackgroundColor(Color.TRANSPARENT);
+            LL_botonera.setBackgroundResource(R.drawable.botonera);
             LL_titulo.addView(LL_botonera);
 
             /// Boton mensaje privado
-            Button Button_msjPrivado = new Button(LL_botonera.getContext());
+            ImageButton Button_msjPrivado = new ImageButton(LL_botonera.getContext());
             Button_msjPrivado.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT, (float) 1.0));
-            Button_msjPrivado.setBackgroundResource(R.drawable.button_msjprivado);
+            Button_msjPrivado.setImageResource(R.drawable.button_msjprivado);
+            Button_msjPrivado.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+            Button_msjPrivado.setBackgroundColor(Color.TRANSPARENT);
             LL_botonera.addView(Button_msjPrivado);
 
             /// Boton proximo a visitar
-            Button Button_quieroIr = new Button(LL_botonera.getContext());
+            ImageButton Button_quieroIr = new ImageButton(LL_botonera.getContext());
             Button_quieroIr.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT, (float) 1.0));
-            Button_quieroIr.setBackgroundResource(R.drawable.button_quieroir);
+            Button_quieroIr.setImageResource(R.drawable.button_quieroir);
+            Button_quieroIr.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+            Button_quieroIr.setBackgroundColor(Color.TRANSPARENT);
             LL_botonera.addView(Button_quieroIr);
 
             /// Boton ver mensajes/escribir
-            Button Button_verMensajes = new Button(LL_botonera.getContext());
+            ImageButton Button_verMensajes = new ImageButton(LL_botonera.getContext());
             Button_verMensajes.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT, (float) 1.0));
-            Button_verMensajes.setBackgroundResource(R.drawable.button_chat);
+            Button_verMensajes.setImageResource(R.drawable.button_chat);
+            Button_verMensajes.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+            Button_verMensajes.setBackgroundColor(Color.TRANSPARENT);
             LL_botonera.addView(Button_verMensajes);
 
             /// Boton dar me gusta
-            Button Button_like = new Button(LL_botonera.getContext());
+            ImageButton Button_like = new ImageButton(LL_botonera.getContext());
             Button_like.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT, (float) 1.0));
-            Button_like.setBackgroundResource(R.drawable.button_unlike);
+            Button_like.setImageResource(R.drawable.button_unlike);
+            Button_like.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+            Button_like.setBackgroundColor(Color.TRANSPARENT);
             LL_botonera.addView(Button_like);
 
             ConstraintSet CS_pubYbarra = new ConstraintSet();

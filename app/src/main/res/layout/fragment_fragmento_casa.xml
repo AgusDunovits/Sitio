@@ -18,20 +18,21 @@
             android:orientation="horizontal"
             app:layout_constraintTop_toTopOf="parent">
 
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="10" />
+
             <ImageView
                 android:id="@+id/imageView2"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="5dp"
-                android:layout_weight="2"
+                android:layout_weight="15"
                 android:paddingLeft="5dp"
-                android:scaleType="fitStart"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:scaleType="fitCenter"
                 android:src="@mipmap/logo2" />
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="30" />
 
             <ImageButton
                 android:id="@+id/imageButton11"
@@ -89,12 +90,11 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="10dp"
-                                android:layout_marginTop="10dp"
                                 android:layout_marginRight="8dp"
                                 android:layout_marginBottom="15dp"
-                                android:backgroundTint="#2C2C2C"
+                                android:backgroundTint="#FFFFFF"
                                 android:text="+"
-                                android:textColor="#FFFFFF"
+                                android:textColor="#FFB95A"
                                 android:textSize="34sp" />
                         </LinearLayout>
                     </ScrollView>

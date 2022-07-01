@@ -77,6 +77,7 @@
                     android:layout_weight="1"
                     android:backgroundTint="#FFB95A"
                     android:text="Por mi ubicación"
+                    android:textColor="#FFFFFF"
                     android:textSize="16sp" />
 
                 <Button
@@ -86,6 +87,7 @@
                     android:layout_weight="1"
                     android:backgroundTint="#FFB95A"
                     android:text="Por zona"
+                    android:textColor="#FFFFFF"
                     android:textSize="16sp" />
             </LinearLayout>
 
