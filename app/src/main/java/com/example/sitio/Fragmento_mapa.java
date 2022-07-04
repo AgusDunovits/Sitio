@@ -1,5 +1,6 @@
 package com.example.sitio;
 
+import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -88,6 +89,9 @@ public class Fragmento_mapa extends Fragment {
             "Restau- rante",
             "Heladería",
             "Pizzería",
+            "Pastas",
+            "Vegetariano ",
+            "Vegano",
             "Deportiva",
             "Sport",
             "Casual",
@@ -108,15 +112,16 @@ public class Fragmento_mapa extends Fragment {
     };
     int[] int_botonActivo = new int[segundasOpciones.length];
     int[] cantidadSegundas = {
-            4,4,4,4,2,3
+            7,4,4,4,2,3
     };
     int[] posicionSegundas = {
-            0,4,8,12,16,18
+            0,7,11,15,19,21
     };
     int[] idTablas = new int[String_cantidadOpciones.length*3];
     int[] idBotones = new int[segundasOpciones.length];
     int id_checkBox, id_botonFiltrar;
     int cantidadActivos = 0;
+    Boolean Bool_mapa = false;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -213,13 +218,13 @@ public class Fragmento_mapa extends Fragment {
                             @Override
                             public void onClick(View v) {
                                 CheckBox temp_CheckBox = vista_mapa.findViewById(id_checkBox);
-                                int_segundaOpcion = int_posicion;
+                                int_segundaOpcion = 1;
                                 if(int_botonActivo[int_posicion]==0){
                                     /** Esta inactivo */
                                     cantidadActivos += 1;
                                     int_botonActivo[int_posicion] = 1;
-                                    Button_opcion2.setBackgroundColor(Color.parseColor("#B6741A"));
-                                    Button_opcion2.setTextColor(Color.parseColor("#F6F6F6"));
+                                    Button_opcion2.setBackgroundColor(Color.parseColor("#F3F3F3"));
+                                    Button_opcion2.setTextColor(Color.parseColor("#FF9A11"));
                                 } else {
                                     /** Esta activo */
                                     cantidadActivos -= 1;
@@ -252,6 +257,12 @@ public class Fragmento_mapa extends Fragment {
         CB_todosFiltros.setText("Todas las opciones");
         CB_todosFiltros.setTypeface(null, Typeface.BOLD);
         CB_todosFiltros.setId(View.generateViewId());
+        LinearLayout.LayoutParams LLLP_checkBox = new LinearLayout.LayoutParams(
+                GridLayout.LayoutParams.WRAP_CONTENT, GridLayout.LayoutParams.WRAP_CONTENT
+        );
+        LLLP_checkBox.setMargins(0,40,00,0);
+        CB_todosFiltros.setLayoutParams(LLLP_checkBox);
+        CB_todosFiltros.setButtonTintList(ColorStateList.valueOf(Color.parseColor("#444444")));
         id_checkBox = CB_todosFiltros.getId();
         LL_segundasOpciones.addView(CB_todosFiltros);
 
@@ -264,8 +275,8 @@ public class Fragmento_mapa extends Fragment {
                     if(isChecked){
                         cantidadActivos = cantidadSegundas[int_primeraOpcion];
                         int_botonActivo[posicionBotones+n] = 1;
-                        Button_temp.setBackgroundColor(Color.parseColor("#B6741A"));
-                        Button_temp.setTextColor(Color.parseColor("#F6F6F6"));
+                        Button_temp.setBackgroundColor(Color.parseColor("#F3F3F3"));
+                        Button_temp.setTextColor(Color.parseColor("#FF9A11"));
                     } else if(cantidadActivos==cantidadSegundas[int_primeraOpcion]) {
                         int_botonActivo[posicionBotones+n] = 0;
                         Button_temp.setBackgroundColor(Color.parseColor("#FFB95A"));
@@ -277,6 +288,7 @@ public class Fragmento_mapa extends Fragment {
                 if(cantidadActivos>0) {
                     Button_temp.setBackgroundColor(Color.parseColor("#F3F3F3"));
                     Button_temp.setTextColor(Color.parseColor("#FF9A11"));
+                    int_segundaOpcion = 0;
                 } else {
                     Button_temp.setBackgroundColor(Color.parseColor("#EBEBEB"));
                     Button_temp.setTextColor(Color.parseColor("#999999"));
@@ -287,7 +299,7 @@ public class Fragmento_mapa extends Fragment {
         LinearLayout.LayoutParams LLLP_SeekBar = new LinearLayout.LayoutParams(
                 GridLayout.LayoutParams.MATCH_PARENT, int_dimSeekBar
         );
-        LLLP_SeekBar.setMargins(20,80,20,0);
+        LLLP_SeekBar.setMargins(20,40,20,0);
         LinearLayout LL_barraKm = new LinearLayout(LL_segundasOpciones.getContext());
         LL_barraKm.setOrientation(LinearLayout.HORIZONTAL);
         LL_barraKm.setLayoutParams(LLLP_SeekBar);
@@ -298,6 +310,8 @@ public class Fragmento_mapa extends Fragment {
                 GridLayout.LayoutParams.WRAP_CONTENT, GridLayout.LayoutParams.MATCH_PARENT,5));
         SB_segundasOpciones.setMax(7);
         SB_segundasOpciones.setProgress(0);
+        SB_segundasOpciones.setProgressTintList(ColorStateList.valueOf(Color.WHITE));
+        SB_segundasOpciones.setThumbTintList(ColorStateList.valueOf(Color.parseColor("#FFB95A")));
         LL_barraKm.addView(SB_segundasOpciones);
 
         TextView TV_seekBar = new TextView(LL_barraKm.getContext());
@@ -340,6 +354,7 @@ public class Fragmento_mapa extends Fragment {
             @Override
             public void onClick(View v) {
                 if(cantidadActivos>0){
+                    Bool_mapa = true;
                     IV_Mapa.setVisibility(View.VISIBLE);
                     LL_segundasOpciones.setVisibility(View.GONE);
                 }
@@ -366,8 +381,8 @@ public class Fragmento_mapa extends Fragment {
         IB_retroceder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(int_segundaOpcion!=-1){
-                    int_segundaOpcion = -1;
+                if(int_segundaOpcion!=-1 && Bool_mapa == true){
+                    Bool_mapa = false;
                     IV_Mapa.setVisibility(View.GONE);
                     LL_segundasOpciones.setVisibility(View.VISIBLE);
                 } else {
@@ -382,7 +397,6 @@ public class Fragmento_mapa extends Fragment {
                                 LL_temp.setVisibility(View.GONE);
                             }
                         }
-
                         int_primeraOpcion = -1;
                         LL_primerasOpciones.setVisibility(View.VISIBLE);
                         LL_segundasOpciones.setVisibility(View.GONE);
