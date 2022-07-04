@@ -19,7 +19,7 @@ public class Principal extends AppCompatActivity {
             new Fragmento_casa(),
             new Fragmento_sugerencias(),
             new Fragmento_mapa(),
-            new Fragmento_buscar(),
+            new Fragmento_publicacion(),
             new Fragmento_usuario()
     };
     private Boolean[] boton_active = {true,false,false,false,false};
@@ -94,5 +94,4 @@ public class Principal extends AppCompatActivity {
         transicion.commit();
         //overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
-
 }

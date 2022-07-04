@@ -1,24 +1,19 @@
 package com.example.sitio;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link Fragmento_publicacion#newInstance} factory method to
+ * Use the {@link Fragmento_publicacion_edit#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Fragmento_publicacion extends Fragment {
+public class Fragmento_publicacion_edit extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -29,7 +24,7 @@ public class Fragmento_publicacion extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public Fragmento_publicacion() {
+    public Fragmento_publicacion_edit() {
         // Required empty public constructor
     }
 
@@ -39,18 +34,18 @@ public class Fragmento_publicacion extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment Fragmento_publicacion.
+     * @return A new instance of fragment Fragmento_publicacion_edit.
      */
     // TODO: Rename and change types and number of parameters
-    public static Fragmento_publicacion newInstance(String param1, String param2) {
-        Fragmento_publicacion fragment = new Fragmento_publicacion();
+    public static Fragmento_publicacion_edit newInstance(String param1, String param2) {
+        Fragmento_publicacion_edit fragment = new Fragmento_publicacion_edit();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
-
         return fragment;
     }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,20 +59,6 @@ public class Fragmento_publicacion extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_fragmento_publicacion, container, false);
-        ImageButton boton_comida1;
-        boton_comida1 = view.findViewById(R.id.boton_comida1);
-        boton_comida1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                FragmentTransaction transicion = fragmentManager.beginTransaction();
-                transicion.replace(R.id.Ventana_principal, new Fragmento_publicacion_edit());
-                transicion.commit();
-            }
-        });
-
-        return  view;
+        return inflater.inflate(R.layout.fragment_fragmento_publicacion_edit, container, false);
     }
-
 }

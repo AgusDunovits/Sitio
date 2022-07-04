@@ -24,7 +24,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="0"
                 android:background="#00FFFFFF"
-                android:src="?attr/actionModeCloseDrawable" />
+                android:src="?attr/actionModeCloseDrawable"/>
 
             <TextView
                 android:id="@+id/textView4"
@@ -73,42 +73,43 @@
                         android:orientation="vertical">
 
                         <ImageButton
-                            android:id="@+id/imageButton15"
+                            android:id="@+id/boton_comida1"
                             android:layout_width="match_parent"
                             android:layout_height="125dp"
+                            android:onClick="publicar"
                             android:scaleType="centerCrop"
                             android:src="@drawable/fotoejemplo1" />
 
                         <ImageButton
-                            android:id="@+id/imageButton16"
+                            android:id="@+id/boton_comida2"
                             android:layout_width="match_parent"
                             android:layout_height="125dp"
                             android:scaleType="centerCrop"
                             android:src="@drawable/fotoejemplo2" />
 
                         <ImageButton
-                            android:id="@+id/imageButton21"
+                            android:id="@+id/boton_comida3"
                             android:layout_width="match_parent"
                             android:layout_height="125dp"
                             android:scaleType="centerCrop"
                             android:src="@drawable/fotoejemplo3" />
 
                         <ImageButton
-                            android:id="@+id/imageButton22"
+                            android:id="@+id/boton_comida4"
                             android:layout_width="match_parent"
                             android:layout_height="125dp"
                             android:scaleType="centerCrop"
                             android:src="@drawable/fotoejemplo4" />
 
                         <ImageButton
-                            android:id="@+id/imageButton34"
+                            android:id="@+id/boton_comida5"
                             android:layout_width="match_parent"
                             android:layout_height="125dp"
                             android:scaleType="centerCrop"
                             android:src="@drawable/fotoejemplo6" />
 
                         <ImageButton
-                            android:id="@+id/imageButton36"
+                            android:id="@+id/boton_comida6"
                             android:layout_width="match_parent"
                             android:layout_height="125dp"
                             android:scaleType="centerCrop"
@@ -135,42 +136,42 @@
                         android:orientation="vertical">
 
                         <ImageButton
-                            android:id="@+id/imageButton17"
+                            android:id="@+id/boton_comida7"
                             android:layout_width="match_parent"
                             android:layout_height="125dp"
                             android:scaleType="centerCrop"
                             android:src="@drawable/fotoejemplo3" />
 
                         <ImageButton
-                            android:id="@+id/imageButton28"
+                            android:id="@+id/boton_comida8"
                             android:layout_width="match_parent"
                             android:layout_height="125dp"
                             android:scaleType="centerCrop"
                             android:src="@drawable/fotoejemplo4" />
 
                         <ImageButton
-                            android:id="@+id/imageButton25"
+                            android:id="@+id/boton_comida9"
                             android:layout_width="match_parent"
                             android:layout_height="125dp"
                             android:scaleType="centerCrop"
                             android:src="@drawable/fotoejemplo5" />
 
                         <ImageButton
-                            android:id="@+id/imageButton24"
+                            android:id="@+id/boton_comida10"
                             android:layout_width="match_parent"
                             android:layout_height="125dp"
                             android:scaleType="centerCrop"
                             android:src="@drawable/fotoejemplo1" />
 
                         <ImageButton
-                            android:id="@+id/imageButton31"
+                            android:id="@+id/boton_comida11"
                             android:layout_width="match_parent"
                             android:layout_height="125dp"
                             android:scaleType="centerCrop"
                             android:src="@drawable/fotoejemplo2" />
 
                         <ImageButton
-                            android:id="@+id/imageButton35"
+                            android:id="@+id/boton_comida12"
                             android:layout_width="match_parent"
                             android:layout_height="125dp"
                             android:scaleType="centerCrop"
@@ -197,42 +198,42 @@
                         android:orientation="vertical">
 
                         <ImageButton
-                            android:id="@+id/imageButton19"
+                            android:id="@+id/boton_comida13"
                             android:layout_width="match_parent"
                             android:layout_height="125dp"
                             android:scaleType="centerCrop"
                             android:src="@drawable/fotoejemplo5" />
 
                         <ImageButton
-                            android:id="@+id/imageButton20"
+                            android:id="@+id/boton_comida14"
                             android:layout_width="match_parent"
                             android:layout_height="125dp"
                             android:scaleType="centerCrop"
                             android:src="@drawable/fotoejemplo6" />
 
                         <ImageButton
-                            android:id="@+id/imageButton26"
+                            android:id="@+id/boton_comida15"
                             android:layout_width="match_parent"
                             android:layout_height="125dp"
                             android:scaleType="centerCrop"
                             android:src="@drawable/fotoejemplo1" />
 
                         <ImageButton
-                            android:id="@+id/imageButton27"
+                            android:id="@+id/boton_comida16"
                             android:layout_width="match_parent"
                             android:layout_height="125dp"
                             android:scaleType="centerCrop"
                             android:src="@drawable/fotoejemplo3" />
 
                         <ImageButton
-                            android:id="@+id/imageButton30"
+                            android:id="@+id/boton_comida17"
                             android:layout_width="match_parent"
                             android:layout_height="125dp"
                             android:scaleType="centerCrop"
                             android:src="@drawable/fotoejemplo4" />
 
                         <ImageButton
-                            android:id="@+id/imageButton37"
+                            android:id="@+id/boton_comida18"
                             android:layout_width="match_parent"
                             android:layout_height="125dp"
                             android:scaleType="centerCrop"
