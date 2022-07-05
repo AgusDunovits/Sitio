@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,12 +20,12 @@ public class Principal extends AppCompatActivity {
             new Fragmento_casa(),
             new Fragmento_sugerencias(),
             new Fragmento_mapa(),
-            new Fragmento_buscar(),
+            new Fragmento_publicacion(),
             new Fragmento_usuario()
     };
+
     private Boolean[] boton_active = {true,false,false,false,false};
     private ImageButton[] barra_boton = new ImageButton[5];
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
