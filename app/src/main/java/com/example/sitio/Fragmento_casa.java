@@ -323,7 +323,7 @@ public class Fragmento_casa extends Fragment {
 
 
             // Descripcion publicacion
-            String String_descripcion = "Ya no se si lo que escribo supera la division de la descripción asi que aqui dejo algunas palabras random para probarlo y asi generar el evento de error.";
+            String String_descripcion = "Me encanto el ambiente y la comida 10 puntos, lo que si tardaron 30 minutos en traer la comida y no fueron muy atentos.";
             if(String_descripcion.length()>120)String_descripcion = String_descripcion.substring(0,120);
             TextView TV_descripcion = new TextView(CL_pubYbarra.getContext());
             TV_descripcion.setId(View.generateViewId());
