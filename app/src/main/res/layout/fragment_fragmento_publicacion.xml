@@ -43,11 +43,18 @@
             android:layout_height="10dp"
             android:layout_weight="0" />
 
+        <View
+            android:id="@+id/view44"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_weight="0"
+            android:background="#000000" />
+
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="600dp"
+            android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:layout_weight="0">
+            android:layout_weight="1">
 
             <TableLayout
                 android:layout_width="match_parent"
@@ -76,7 +83,6 @@
                             android:id="@+id/boton_comida1"
                             android:layout_width="match_parent"
                             android:layout_height="125dp"
-                            android:onClick="publicar"
                             android:scaleType="centerCrop"
                             android:src="@drawable/fotoejemplo1" />
 
@@ -258,7 +264,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="50dp"
             android:layout_weight="0"
             android:orientation="horizontal">
 

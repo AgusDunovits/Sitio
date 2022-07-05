@@ -1,12 +1,21 @@
 package com.example.sitio;
 
+import static android.content.Context.MODE_PRIVATE;
+
+import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -45,7 +54,8 @@ public class Fragmento_publicacion_edit extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
-
+    public TextView texto_prueba;
+    public Button boton_publicacion;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,12 +63,40 @@ public class Fragmento_publicacion_edit extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
 
+    SharedPreferences id_publicacion;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_fragmento_publicacion_edit, container, false);
+        View view = inflater.inflate(R.layout.fragment_fragmento_publicacion_edit, container, false);
+
+        /*
+        ///////////// PROVISORIOO HASTA TENER BASE DE DATOS /////////////////////
+        id_publicacion = getContext().getSharedPreferences("id_publicacion", MODE_PRIVATE);
+        int id_imagen = id_publicacion.getInt("id_publicacion", 999);
+        id_publicacion.edit().commit();
+        ////////////////////////////////////////////////////////////////////////
+        imagen_foto1 = view.findViewById(R.id.imagen_foto1);
+        //Drawable drawable = Drawable.createFromPath(id_imagen);
+        imagen_foto1.setBackgroundResource(id_imagen);
+        */
+        boton_publicacion = view.findViewById(R.id.a_f_publicacion);
+        boton_publicacion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction transicion = fragmentManager.beginTransaction();
+                transicion.replace(R.id.Ventana_principal, new Fragmento_publicacion_publicar());
+                transicion.commit();
+            }
+        });
+        return  view;
     }
+    public void dato_de_publicacion(String mensaje){
+        texto_prueba.setText(mensaje);
+    }
+
 }
