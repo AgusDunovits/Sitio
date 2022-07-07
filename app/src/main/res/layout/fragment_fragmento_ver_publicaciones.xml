@@ -12,6 +12,27 @@
         android:background="#D8C2C2">
 
         <TextView
+            android:id="@+id/mensajes"
+            android:layout_width="17dp"
+            android:layout_height="26dp"
+            android:layout_marginTop="-10dp"
+            android:text="0"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toStartOf="@+id/imageView16"
+            app:layout_constraintTop_toTopOf="@+id/imageView16" />
+
+        <TextView
+            android:id="@+id/like"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-10dp"
+            android:layout_marginEnd="10dp"
+            android:text="0"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toStartOf="@+id/imageView13"
+            app:layout_constraintTop_toTopOf="@+id/imageView13" />
+
+        <TextView
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -293,10 +314,10 @@
             android:text="Descripcion"
             android:textSize="20sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/editTextTextMultiLine3" />
+            app:layout_constraintBottom_toTopOf="@+id/texto_descripcion_ver_publicacion" />
 
         <EditText
-            android:id="@+id/editTextTextMultiLine3"
+            android:id="@+id/texto_descripcion_ver_publicacion"
             android:layout_width="0dp"
             android:layout_height="67dp"
             android:layout_marginBottom="60dp"
@@ -305,7 +326,6 @@
             android:gravity="start|top"
             android:hint="@string/descripcion_de_relleno_publicacion"
             android:inputType="textMultiLine"
-            android:text="Comi el otro dia en lo de Romario, la comida es muy buena, totalmente recomendado "
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -327,8 +347,8 @@
             android:layout_marginTop="5dp"
             android:layout_marginEnd="16dp"
             android:src="@android:drawable/star_big_off"
-            app:layout_constraintEnd_toEndOf="@+id/editTextTextMultiLine3"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine3" />
+            app:layout_constraintEnd_toEndOf="@+id/texto_descripcion_ver_publicacion"
+            app:layout_constraintTop_toBottomOf="@+id/texto_descripcion_ver_publicacion" />
 
         <ImageView
             android:id="@+id/imageView17"
@@ -337,7 +357,7 @@
             android:src="@drawable/masopciones"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/horizontalScrollView"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine3" />
+            app:layout_constraintTop_toBottomOf="@+id/texto_descripcion_ver_publicacion" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

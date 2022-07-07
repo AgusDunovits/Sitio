@@ -10,8 +10,10 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+import android.widget.EditText;
 import android.widget.HorizontalScrollView;
 import android.widget.ScrollView;
+import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -63,10 +65,12 @@ public class Fragmento_ver_publicaciones extends Fragment {
     }
     ScrollView scrollView1,scrollView2;
     HorizontalScrollView horizontalScrollView1;
+    TextView like, mensaje;
     int scroll1X, scroll1Y;
     int scroll2X, scroll2Y;
     int scrollHX, scrollHY;
     boolean focoactivo1,focoactivo2;
+    EditText texto_descripcion;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -75,10 +79,16 @@ public class Fragmento_ver_publicaciones extends Fragment {
         horizontalScrollView1 = view.findViewById(R.id.horizontalScrollView);
         scrollView1 = view.findViewById(R.id.scrollView2);
         scrollView2 = view.findViewById(R.id.scrollView22);
+        like = view.findViewById(R.id.like);
+        mensaje = view.findViewById(R.id.mensajes);
+        like.setText("54");
+        mensaje.setText("5");
+        texto_descripcion = view.findViewById(R.id.texto_descripcion_ver_publicacion);
+        texto_descripcion.setText("Comi el otro dia en lo de Romario, la comida es muy buena, totalmente recomendado ");
         saber_posicion_barras(scrollView1, 1);
         saber_posicion_barras(scrollView2, 2);
         saber_posicion_barras_horizontal(horizontalScrollView1);
-        corregir_barra_horizontal(horizontalScrollView1);
+        corregir_barra_horizontal_y_vertical(horizontalScrollView1, scrollView1, scrollView2);
         bloquaar_barras(scrollView1, 1);
         bloquaar_barras(scrollView2, 2);
         //////////////////////////
@@ -134,7 +144,7 @@ public class Fragmento_ver_publicaciones extends Fragment {
             }
         });
     }
-    private void corregir_barra_horizontal(HorizontalScrollView horizontalScrollView) {
+    private void corregir_barra_horizontal_y_vertical(HorizontalScrollView horizontalScrollView, ScrollView scroll1,ScrollView scroll2) {
         horizontalScrollView.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
@@ -143,10 +153,18 @@ public class Fragmento_ver_publicaciones extends Fragment {
                     horizontalScrollView.setScrollX(1046);
                     focoactivo1 = false;
                     focoactivo2 = true;
+                    scroll1.setScrollY(0);
+                    texto_descripcion.setText("Muy rica comida a buen precio\nAmee ");
+                   like.setText("23");
+                   mensaje.setText("3");
                 } else if(focoactivo2 & scrollHX <=450){
                    horizontalScrollView.setScrollX(0);
                    focoactivo1 = true;
                    focoactivo2 = false;
+                   scroll2.setScrollY(0);
+                   texto_descripcion.setText("Comi el otro dia en lo de Romario, la comida es muy buena, totalmente recomendado ");
+                   like.setText("54");
+                   mensaje.setText("5");
                }
                 return false;
             }
