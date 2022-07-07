@@ -87,7 +87,7 @@
                             android:src="@drawable/fotoejemplo1" />
 
                         <ImageButton
-                            android:id="@+id/boton_comida2"
+                            android:id="@+id/boton_comida92"
                             android:layout_width="match_parent"
                             android:layout_height="125dp"
                             android:scaleType="centerCrop"
@@ -101,21 +101,21 @@
                             android:src="@drawable/fotoejemplo3" />
 
                         <ImageButton
-                            android:id="@+id/boton_comida4"
+                            android:id="@+id/boton_comida94"
                             android:layout_width="match_parent"
                             android:layout_height="125dp"
                             android:scaleType="centerCrop"
                             android:src="@drawable/fotoejemplo4" />
 
                         <ImageButton
-                            android:id="@+id/boton_comida5"
+                            android:id="@+id/boton_comida95"
                             android:layout_width="match_parent"
                             android:layout_height="125dp"
                             android:scaleType="centerCrop"
                             android:src="@drawable/fotoejemplo6" />
 
                         <ImageButton
-                            android:id="@+id/boton_comida6"
+                            android:id="@+id/boton_comida96"
                             android:layout_width="match_parent"
                             android:layout_height="125dp"
                             android:scaleType="centerCrop"

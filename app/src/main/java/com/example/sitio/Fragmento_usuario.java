@@ -50,7 +50,7 @@ public class Fragmento_usuario extends Fragment {
         return fragment;
     }
     private ImageView boton_provisional;
-    private ImageButton boton_ajustes;
+    private ImageButton boton_ajustes, boton_comida1;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -69,6 +69,7 @@ public class Fragmento_usuario extends Fragment {
         View view = inflater.inflate(R.layout.fragment_fragmento_usuario, container, false);
         boton_ajustes = view.findViewById(R.id.boton_ajustes);
         boton_provisional = view.findViewById(R.id.boton_provisional_para_externo);
+        boton_comida1 = view.findViewById(R.id.boton_comida1);
         boton_ajustes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -84,6 +85,15 @@ public class Fragmento_usuario extends Fragment {
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction transicion = fragmentManager.beginTransaction();
                 transicion.replace(R.id.Ventana_principal, new Fragmento_usuarioexterno());
+                transicion.commit();
+            }
+        });
+        boton_comida1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction transicion = fragmentManager.beginTransaction();
+                transicion.replace(R.id.Ventana_principal, new Fragmento_ver_publicaciones());
                 transicion.commit();
             }
         });
