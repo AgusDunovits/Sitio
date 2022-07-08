@@ -151,7 +151,7 @@
             android:layout_width="390dp"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:layout_weight="1">
+            android:layout_weight="0">
 
             <TableLayout
                 android:layout_width="match_parent"
@@ -186,13 +186,12 @@
                             android:id="@+id/view"
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
-                            android:background="#000000" />
+                            android:background="#00000000" />
 
                         <TextView
                             android:id="@+id/textView27"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Foto"
                             android:textSize="48sp" />
 
                         <View
@@ -212,13 +211,12 @@
                             android:id="@+id/view7"
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
-                            android:background="#000000" />
+                            android:background="#00FFFFFF" />
 
                         <TextView
                             android:id="@+id/textView29"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Foto"
                             android:textSize="48sp" />
 
                         <View
@@ -238,13 +236,12 @@
                             android:id="@+id/view9"
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
-                            android:background="#000000" />
+                            android:background="#00FFFFFF" />
 
                         <TextView
                             android:id="@+id/textView31"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Foto"
                             android:textSize="48sp" />
 
                         <View
@@ -264,13 +261,12 @@
                             android:id="@+id/view11"
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
-                            android:background="#000000" />
+                            android:background="#00FFFFFF" />
 
                         <TextView
                             android:id="@+id/textView33"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Foto"
                             android:textSize="48sp" />
 
                         <View
@@ -290,13 +286,13 @@
                             android:id="@+id/view13"
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
-                            android:background="#000000" />
+                            android:background="#00000000" />
 
                         <TextView
                             android:id="@+id/textView35"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Foto"
+                            android:background="#00FFFFFF"
                             android:textSize="48sp" />
 
                         <View
@@ -305,11 +301,13 @@
                             android:layout_height="1dp"
                             android:background="#000000" />
                     </LinearLayout>
+
                     <View
                         android:id="@+id/view1"
                         android:layout_width="1dp"
                         android:layout_height="match_parent"
                         android:background="#000000" />
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -327,13 +325,12 @@
                             android:id="@+id/view15"
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
-                            android:background="#000000" />
+                            android:background="#00000000" />
 
                         <TextView
                             android:id="@+id/textView5"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Foto"
                             android:textSize="48sp" />
 
                         <View
@@ -353,13 +350,12 @@
                             android:id="@+id/view17"
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
-                            android:background="#000000" />
+                            android:background="#00FFFFFF" />
 
                         <TextView
                             android:id="@+id/textView9"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Foto"
                             android:textSize="48sp" />
 
                         <View
@@ -379,13 +375,12 @@
                             android:id="@+id/view19"
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
-                            android:background="#000000" />
+                            android:background="#00FFFFFF" />
 
                         <TextView
                             android:id="@+id/textView14"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Foto"
                             android:textSize="48sp" />
 
                         <View
@@ -405,13 +400,12 @@
                             android:id="@+id/view21"
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
-                            android:background="#000000" />
+                            android:background="#00FFFFFF" />
 
                         <TextView
                             android:id="@+id/textView16"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Foto"
                             android:textSize="48sp" />
 
                         <View
@@ -431,13 +425,12 @@
                             android:id="@+id/view23"
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
-                            android:background="#000000" />
+                            android:background="#00000000" />
 
                         <TextView
                             android:id="@+id/textView18"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Foto"
                             android:textSize="48sp" />
 
                         <View
@@ -446,11 +439,13 @@
                             android:layout_height="1dp"
                             android:background="#000000" />
                     </LinearLayout>
+
                     <View
                         android:id="@+id/view2"
                         android:layout_width="1dp"
                         android:layout_height="match_parent"
                         android:background="#000000" />
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -468,13 +463,12 @@
                             android:id="@+id/view25"
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
-                            android:background="#000000" />
+                            android:background="#00000000" />
 
                         <TextView
                             android:id="@+id/textView20"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Foto"
                             android:textSize="48sp" />
 
                         <View
@@ -494,13 +488,12 @@
                             android:id="@+id/view27"
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
-                            android:background="#000000" />
+                            android:background="#00FFFFFF" />
 
                         <TextView
                             android:id="@+id/textView22"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Foto"
                             android:textSize="48sp" />
 
                         <View
@@ -520,13 +513,12 @@
                             android:id="@+id/view29"
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
-                            android:background="#000000" />
+                            android:background="#00FFFFFF" />
 
                         <TextView
                             android:id="@+id/textView24"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Foto"
                             android:textSize="48sp" />
 
                         <View
@@ -546,13 +538,12 @@
                             android:id="@+id/view31"
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
-                            android:background="#000000" />
+                            android:background="#00FFFFFF" />
 
                         <TextView
                             android:id="@+id/textView37"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Foto"
                             android:textSize="48sp" />
 
                         <View
@@ -572,13 +563,13 @@
                             android:id="@+id/view33"
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
-                            android:background="#000000" />
+                            android:background="#00000000" />
 
                         <TextView
                             android:id="@+id/textView39"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Foto"
+                            android:background="#00FFFFFF"
                             android:textSize="48sp" />
 
                         <View
@@ -587,6 +578,7 @@
                             android:layout_height="1dp"
                             android:background="#000000" />
                     </LinearLayout>
+
                     <View
                         android:id="@+id/view3"
                         android:layout_width="1dp"
