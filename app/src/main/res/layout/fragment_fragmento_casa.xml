@@ -29,16 +29,24 @@
                 android:layout_height="match_parent"
                 android:layout_weight="15"
                 android:paddingLeft="5dp"
-                android:paddingTop="5dp"
+                android:paddingTop="10dp"
                 android:paddingBottom="8dp"
                 android:scaleType="fitCenter"
                 android:src="@mipmap/logo2" />
 
             <ImageButton
+                android:id="@+id/imageButton15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:backgroundTint="#00FFFFFF"
+                android:src="@drawable/button_milista" />
+
+            <ImageButton
                 android:id="@+id/imageButton11"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="3"
+                android:layout_weight="2"
                 android:background="#00FFFFFF"
                 android:scaleType="center"
                 android:src="@drawable/button_sinchat" />
@@ -47,7 +55,7 @@
                 android:id="@+id/imageButton2"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="3"
+                android:layout_weight="2"
                 android:background="#00FFFFFF"
                 android:src="@drawable/button_notificacion" />
 
