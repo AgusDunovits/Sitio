@@ -1,9 +1,5 @@
 package com.example.sitio;
 
-import static android.content.Context.MODE_PRIVATE;
-
-import android.content.SharedPreferences;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -14,15 +10,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.LinearLayout;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link Fragmento_publicacion_edit#newInstance} factory method to
+ * Use the {@link Fragmento_publicacion_edit_2#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Fragmento_publicacion_edit extends Fragment {
+public class Fragmento_publicacion_edit_2 extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -33,7 +28,7 @@ public class Fragmento_publicacion_edit extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public Fragmento_publicacion_edit() {
+    public Fragmento_publicacion_edit_2() {
         // Required empty public constructor
     }
 
@@ -43,19 +38,18 @@ public class Fragmento_publicacion_edit extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment Fragmento_publicacion_edit.
+     * @return A new instance of fragment Fragmento_publicacion_edit_2.
      */
     // TODO: Rename and change types and number of parameters
-    public static Fragmento_publicacion_edit newInstance(String param1, String param2) {
-        Fragmento_publicacion_edit fragment = new Fragmento_publicacion_edit();
+    public static Fragmento_publicacion_edit_2 newInstance(String param1, String param2) {
+        Fragmento_publicacion_edit_2 fragment = new Fragmento_publicacion_edit_2();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
-    public TextView texto_prueba;
-    public Button boton_publicacion, edicion_boton;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,29 +57,40 @@ public class Fragmento_publicacion_edit extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
     }
 
-    SharedPreferences id_publicacion;
+    Button boton_emoji, siguiente_edit2, boton_aplicar;
+    Button boton13, boton22, boton23, boton24;
+    LinearLayout linear_emoji, linear_filtro;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_fragmento_publicacion_edit, container, false);
-
-        /*
-        ///////////// PROVISORIOO HASTA TENER BASE DE DATOS /////////////////////
-        id_publicacion = getContext().getSharedPreferences("id_publicacion", MODE_PRIVATE);
-        int id_imagen = id_publicacion.getInt("id_publicacion", 999);
-        id_publicacion.edit().commit();
-        ////////////////////////////////////////////////////////////////////////
-        imagen_foto1 = view.findViewById(R.id.imagen_foto1);
-        //Drawable drawable = Drawable.createFromPath(id_imagen);
-        imagen_foto1.setBackgroundResource(id_imagen);
-        */
-        boton_publicacion = view.findViewById(R.id.a_f_publicacion);
-        edicion_boton = view.findViewById(R.id.edicion_boton);
-        boton_publicacion.setOnClickListener(new View.OnClickListener() {
+        View view = inflater.inflate(R.layout.fragment_fragmento_publicacion_edit_2, container, false);
+        boton_emoji = view.findViewById(R.id.emoji_boton_edit2);
+        boton13 = view.findViewById(R.id.button13);
+        boton22 = view.findViewById(R.id.button22);
+        boton23 = view.findViewById(R.id.button23);
+        boton24 = view.findViewById(R.id.button24);
+        linear_emoji = view.findViewById(R.id.linear_emoji);
+        linear_filtro = view.findViewById(R.id.linear_inicio_filtro);
+        boton_aplicar = view.findViewById(R.id.boton_app);
+        siguiente_edit2 = view.findViewById(R.id.siguiente_edit2);
+        pantalla_emoji(false);
+        boton_emoji.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                pantalla_emoji(true);
+            }
+        });
+        siguiente_edit2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                pantalla_emoji(false);
+            }
+        });
+        boton23.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
@@ -94,19 +99,26 @@ public class Fragmento_publicacion_edit extends Fragment {
                 transicion.commit();
             }
         });
-        edicion_boton.setOnClickListener(new View.OnClickListener() {
+        boton_aplicar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction transicion = fragmentManager.beginTransaction();
-                transicion.replace(R.id.Ventana_principal, new Fragmento_publicacion_edit_2());
+                transicion.replace(R.id.Ventana_principal, new Fragmento_publicacion_edit());
                 transicion.commit();
             }
         });
-        return  view;
+        return view;
     }
-    public void dato_de_publicacion(String mensaje){
-        texto_prueba.setText(mensaje);
+
+    private void pantalla_emoji(Boolean activado) {
+        if (activado) {
+            linear_filtro.setVisibility(View.INVISIBLE);
+            linear_emoji.setVisibility(View.VISIBLE);
+        } else {
+            linear_filtro.setVisibility(View.VISIBLE);
+            linear_emoji.setVisibility(View.INVISIBLE);
+        }
     }
 
 }

@@ -50,13 +50,79 @@
             android:layout_weight="0"
             android:background="#000000" />
 
-        <ImageView
-            android:id="@+id/imageView11"
+        <HorizontalScrollView
             android:layout_width="match_parent"
-            android:layout_height="500dp"
-            android:layout_weight="0"
-            android:background="#B57B7B"
-            android:src="@drawable/fotoejemplo1" />
+            android:layout_height="450dp"
+            android:layout_weight="0">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imageView11"
+                        android:layout_width="400dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0"
+                        android:background="#B57B7B"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/fotoejemplo1" />
+
+                    <View
+                        android:id="@+id/view45"
+                        android:layout_width="5dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0"
+                        android:background="#000000" />
+
+                    <ImageView
+                        android:id="@+id/imageView12"
+                        android:layout_width="400dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/foto1" />
+
+                    <View
+                        android:id="@+id/view46"
+                        android:layout_width="5dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0"
+                        android:background="#000000" />
+
+                    <ImageView
+                        android:id="@+id/imageView19"
+                        android:layout_width="400dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/fotoejemplo3" />
+
+                    <View
+                        android:id="@+id/view47"
+                        android:layout_width="5dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0"
+                        android:background="#000000" />
+
+                    <ImageView
+                        android:id="@+id/imageView21"
+                        android:layout_width="400dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/foto" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </HorizontalScrollView>
 
         <View
             android:id="@+id/view42"
@@ -79,6 +145,79 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/button7"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:insetRight="10dp"
+                        android:paddingTop="4dp"
+                        android:text="Color" />
+
+                    <Button
+                        android:id="@+id/button8"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:insetRight="10dp"
+                        android:paddingTop="4dp"
+                        android:text="Brillo" />
+
+                    <Button
+                        android:id="@+id/button9"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:insetRight="10dp"
+                        android:paddingTop="4dp"
+                        android:text="Angulo" />
+
+                    <Button
+                        android:id="@+id/button10"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:insetRight="10dp"
+                        android:paddingTop="4dp"
+                        android:text="Button" />
+
+                    <Button
+                        android:id="@+id/button11"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:insetRight="10dp"
+                        android:paddingTop="4dp"
+                        android:text="Saturacion" />
+
+                    <Button
+                        android:id="@+id/button12"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:insetRight="10dp"
+                        android:paddingTop="4dp"
+                        android:text="Desenfocar" />
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:layout_weight="0" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:orientation="horizontal">
 
                     <Button
@@ -156,13 +295,43 @@
             </LinearLayout>
         </HorizontalScrollView>
 
-        <Button
-            android:id="@+id/a_f_publicacion"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
             android:layout_weight="0"
-            android:text="Siguiente" />
+            android:orientation="horizontal">
+
+            <Space
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0" />
+
+            <Button
+                android:id="@+id/edicion_boton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="0"
+                android:text="Edicion" />
+
+            <Space
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0" />
+
+            <Button
+                android:id="@+id/a_f_publicacion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:text="Siguiente" />
+
+            <Space
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0" />
+        </LinearLayout>
 
     </LinearLayout>
 </FrameLayout>
