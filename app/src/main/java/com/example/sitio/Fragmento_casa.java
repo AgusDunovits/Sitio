@@ -11,6 +11,8 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.fragment.app.Fragment;
 
+import android.speech.RecognizerIntent;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -34,6 +36,8 @@ import android.util.TypedValue;
  */
 public class Fragmento_casa extends Fragment {
 
+    Facilitadores Facilitar = new Facilitadores();
+
     long tiempo_primerClick = 0L;
     int posicionX_primerClick = 0;
 
@@ -47,73 +51,62 @@ public class Fragmento_casa extends Fragment {
     }
 
     @SuppressLint("ClickableViewAccessibility")
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        Resources r = getResources();
-        int int_screenWidth = r.getDisplayMetrics().widthPixels;
-        int int_anchoHistoria = Math.round(TypedValue.applyDimension(
-                TypedValue.COMPLEX_UNIT_DIP, 80, r.getDisplayMetrics()));
-        int int_margenHistoria = Math.round(TypedValue.applyDimension(
-                TypedValue.COMPLEX_UNIT_DIP, 8, r.getDisplayMetrics()));
-        int int_margenIzquierdo = Math.round(TypedValue.applyDimension(
-                TypedValue.COMPLEX_UNIT_DIP, 10, r.getDisplayMetrics()));
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        // Creación de vista INICIO
 
-        View vista_inicio = inflater.inflate(R.layout.fragment_fragmento_casa, container, false);
-        HorizontalScrollView HSV_pantalla = vista_inicio.findViewById(R.id.HSV_pantalla);
+        DisplayMetrics Recursos = getResources().getDisplayMetrics();
+        int anchura_Pantalla = Recursos.widthPixels;
+        int anchura_Historias = Facilitar.dpApixel( 80 , Recursos );
+
+        View Vista = inflater.inflate( R.layout.fragment_fragmento_casa, container, false );
+        HorizontalScrollView HSV_pantalla = Vista.findViewById(R.id.HSV_pantalla);
+        // Función para detectar eventos de arrastre y soltar para posicionar al usuario sobre cada publicación o historias
         HSV_pantalla.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch( View v, MotionEvent event ) {
                 if ( event.getAction() == MotionEvent.ACTION_MOVE ){
+                    // Al comenzar el scroll obtener el tiempo y posición
                     if( posicionX_primerClick == 0 ) {
                         tiempo_primerClick = System.currentTimeMillis()/100;
                         posicionX_primerClick = HSV_pantalla.getScrollX();
-                        /**
-                         * Log.d("onTouch","Tiempo primer click: "+String.valueOf(tiempo_primerClick));
-                         * Log.d("onTouch","Posicion primer click: "+posicionX_primerClick);
-                         */
                     }
                 }
                 if ( event.getAction() == MotionEvent.ACTION_UP ) {
+                    // Al soltar el scroll obtener el tiempo y nueva posición
                     long tiempo_soltarClick = System.currentTimeMillis()/100;
                     int posicionX_soltarClick = HSV_pantalla.getScrollX();
                     int minimoScroll = 0;
-                    /**
-                     * Log.d("onTouch","Tiempo soltar click: "+String.valueOf(tiempo_primerClick));
-                     * Log.d("onTouch","Posicion soltar click: "+posicionX_soltarClick);
-                     * Log.d("onTouch","Diferencia de tiempos: "+posicionX_soltarClick);
-                     */
                     int posicionScroll = 0;
+
+                    // Esta condición define el límite de pixeles a scrollear para pasar a la anterior o próxima publicación
                     if( tiempo_soltarClick-tiempo_primerClick == 0 ) {
-                        /** Log.d("onTouch","El tipo de scroll fue deslice"); */
+                        // El scroll duró menos de 1 segundo entonces el límite es ínfimo
                         minimoScroll = 10;
                     } else {
-                        /** Log.d("onTouch","El tipo de scroll fue arrastre"); */
-                        minimoScroll = int_screenWidth/2;
+                        // El scroll duró 1 segundo o más entonces el límite es scrollear la mitad de la pantalla
+                        minimoScroll = anchura_Pantalla/2;
                     }
-
                     int diferenciaScroll = posicionX_soltarClick - posicionX_primerClick;
-                    /**
-                     * Log.d("onTouch","Diferencia de scroll: "+diferenciaScroll);
-                     * Log.d("onTouch","Minimo scrolleable: "+minimoScroll);
-                     */
-                    if( posicionX_soltarClick > int_anchoHistoria/2 ) {
-                        posicionScroll = (posicionX_soltarClick - int_anchoHistoria) / int_screenWidth;
+                    if( posicionX_soltarClick > anchura_Historias/2 ) {
+                        // El scroll perdió el foco de las historias entonces posicionamos sobre publicaciones
+                        posicionScroll = (posicionX_soltarClick - anchura_Historias) / anchura_Pantalla;
                         if (diferenciaScroll > minimoScroll) {
-                            /** Log.d("onTouch","Scroll hacia la derecha"); */
-                            posicionScroll += 1;
+                            // Superamos el límite, nos posicionamos en la publicación donde esta el scroll
+                            // Si es que estabamos fuera del foco de historias pasamos a siguiente
+                            if( posicionX_primerClick >= anchura_Historias ) posicionScroll += 1;
                         } else if (diferenciaScroll < 0) {
-                            posicionScroll = (posicionX_primerClick - int_anchoHistoria) / int_screenWidth;
+                            // El scroll fue hacia la izquierda
+                            posicionScroll = (posicionX_primerClick - anchura_Historias) / anchura_Pantalla;
                             if( diferenciaScroll*-1 > minimoScroll ) {
-                                /** Log.d("onTouch","Scroll hacia la izquierda"); */
+                                // Superamos el límite, nos posicionamos en la publicación anterior
                                 posicionScroll -= 1;
                             }
                         }
-                        posicionScroll = int_anchoHistoria + (posicionScroll * int_screenWidth);
+                        posicionScroll = anchura_Historias + (posicionScroll * anchura_Pantalla);
                     } else if (diferenciaScroll > minimoScroll) {
-                        /** Log.d("onTouch","Scroll hacia la derecha"); */
-                        posicionScroll = int_anchoHistoria + (posicionScroll * int_screenWidth);
+                        // Sigo en foco de historias pero superé el límite así que voy a publicaciones
+                        posicionScroll = anchura_Historias;
                     }
-
                     HSV_pantalla.smoothScrollTo(posicionScroll, 0);
                     posicionX_primerClick = 0;
                     return true;
@@ -122,47 +115,41 @@ public class Fragmento_casa extends Fragment {
             }
         });
 
-        ///Historias
-        int int_historias = (int)Math.floor(Math.random()*(10)+1);
+        // Cargar historias
+        int cantidad_historias = (int)Math.floor(Math.random()*(10)+1);
         String[] String_colorHistoria = {"#FFC6C6","#FFE6C6","#FFFEC6","#E4FFC6","#C6FFFE","#C6CEFF","#EFC6FF","#FFC6EE"};
-        LinearLayout LL_historias = vista_inicio.findViewById(R.id.LL_historias);
-        LinearLayout.LayoutParams LLLP_botonHistorias = new LinearLayout.LayoutParams(
-                LayoutParams.MATCH_PARENT,
-                160
-        );
-        LLLP_botonHistorias.setMargins(int_margenIzquierdo,0,int_margenHistoria,15);
+        LinearLayout LL_historias = Vista.findViewById(R.id.LL_historias);
+        LinearLayout.LayoutParams LLLP_botonHistorias = new LinearLayout.LayoutParams( LayoutParams.MATCH_PARENT , Facilitar.dpApixel(55 , Recursos ));
+        LLLP_botonHistorias.setMargins( Facilitar.dpApixel( 12 , Recursos ), 0, Facilitar.dpApixel( 10 , Recursos ), 15);
 
-        if( int_historias==0 ){
-            ScrollView SV_historias = vista_inicio.findViewById(R.id.SV_historias);
-            SV_historias.setVisibility(vista_inicio.GONE);
+        if( cantidad_historias==0 ){
+            ScrollView SV_historias = Vista.findViewById(R.id.SV_historias);
+            SV_historias.setVisibility(Vista.GONE);
         } else {
-            for (int n = 0; n < int_historias; n++) {
+            for (int n = 0; n < cantidad_historias; n++) {
                 int int_colorHistoria = (int)Math.floor(Math.random()*(8)+0);
                 String String_tituloBoton = "His..\n" + n;
                 Button Button_historiaN = new Button(LL_historias.getContext());
                 Button_historiaN.setText(String_tituloBoton);
                 Button_historiaN.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
                 Button_historiaN.setBackgroundColor(Color.parseColor(String_colorHistoria[int_colorHistoria]));
-                Button_historiaN.setTextColor(Color.parseColor("#000000"));
+                Button_historiaN.setTextColor(Color.BLACK);
                 Button_historiaN.setLayoutParams(LLLP_botonHistorias);
                 //Button_historiaN.setBackgroundResource(R.drawable.historia);
                 LL_historias.addView(Button_historiaN);
             }
         }
-        /// PUBLICACIONES
+
+        /// Cargar publicaciones
         String[] String_Lugares = {"Dean & Dennys","McDonald's","Burguer King","Mostaza","Deniro's"};
         String[] String_Personas = {"Darío","Camila","Facundo","Ignacio","Agus"};
         int int_publicaciones = (int)Math.floor(Math.random()*(5)+2);
-        int int_alturaTitulo = Math.round(TypedValue.applyDimension(
-                TypedValue.COMPLEX_UNIT_DIP, 60, r.getDisplayMetrics()));
-        int int_alturaBarra = Math.round(TypedValue.applyDimension(
-                TypedValue.COMPLEX_UNIT_DIP, 70, r.getDisplayMetrics()));
-        int int_alturaDefecto = Math.round(TypedValue.applyDimension(
-                TypedValue.COMPLEX_UNIT_DIP, 50, r.getDisplayMetrics()));
-        int int_alturaFoto = Math.round(TypedValue.applyDimension(
-                TypedValue.COMPLEX_UNIT_DIP, 380, r.getDisplayMetrics()));
+        int int_alturaTitulo = Facilitar.dpApixel( 60 , Recursos );
+        int int_alturaBarra = Facilitar.dpApixel( 70 , Recursos );
+        int int_alturaDefecto = Facilitar.dpApixel( 50 , Recursos );
+        int int_alturaFoto = Facilitar.dpApixel( 380 , Recursos );
 
-        LinearLayout LL_separador = vista_inicio.findViewById(R.id.LL_separador);
+        LinearLayout LL_separador = Vista.findViewById(R.id.LL_separador);
 
         //Constraint para publicaciones
         ConstraintLayout CL_pubXpub = new ConstraintLayout(LL_separador.getContext());
@@ -183,7 +170,7 @@ public class Fragmento_casa extends Fragment {
             LL_contenedorPub.setId(View.generateViewId());
             LL_contenedorPub.setOrientation(LinearLayout.VERTICAL);
             LL_contenedorPub.setBackgroundColor(Color.TRANSPARENT);
-            LL_contenedorPub.setLayoutParams(new LinearLayout.LayoutParams(int_screenWidth, LayoutParams.MATCH_PARENT));
+            LL_contenedorPub.setLayoutParams(new LinearLayout.LayoutParams(anchura_Pantalla, LayoutParams.MATCH_PARENT));
             CL_pubXpub.addView(LL_contenedorPub);
 
             ConstraintSet CS_pubXpub = new ConstraintSet();
@@ -321,7 +308,6 @@ public class Fragmento_casa extends Fragment {
             LL_titulo.setBackgroundResource(R.drawable.botonerasuperior);
             CL_pubYbarra.addView(LL_titulo);
 
-
             // Descripcion publicacion
             String String_descripcion = "Me encanto el ambiente y la comida 10 puntos, lo que si tardaron 30 minutos en traer la comida y no fueron muy atentos.";
             if(String_descripcion.length()>120)String_descripcion = String_descripcion.substring(0,120);
@@ -388,6 +374,6 @@ public class Fragmento_casa extends Fragment {
             CS_pubYbarra.connect(LL_titulo.getId(),ConstraintSet.BOTTOM,CS_pubYbarra.PARENT_ID,ConstraintSet.BOTTOM,0);
             CS_pubYbarra.applyTo(CL_pubYbarra);
         }
-        return vista_inicio;
+        return Vista;
     }
 }
