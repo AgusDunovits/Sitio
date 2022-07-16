@@ -410,11 +410,11 @@ public class Fragmento_mapa extends Fragment {
                 if(cantidadActivos>0){
                     Boolean continuar = true;
                     String miTexto = ACTV_buscarZona.getText().toString();
-                    if(!Arrays.stream(Localidades).anyMatch(miTexto::contains)){
+                    if(!Arrays.stream(Localidades).anyMatch(miTexto::contains) && int_opcionPrincipal==2){
                         continuar = false;
                         ACTV_buscarZona.setText("");
                         ACTV_buscarZona.setHintTextColor(Color.RED);
-                        ACTV_buscarZona.setHint("No exista esa localidad");
+                        ACTV_buscarZona.setHint("No existe esa localidad");
                     } else {
                         Bool_mapa = true;
                         IV_Mapa.setVisibility(View.VISIBLE);
