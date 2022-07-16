@@ -35,7 +35,7 @@
                 android:src="@mipmap/logo2" />
 
             <ImageButton
-                android:id="@+id/imageButton15"
+                android:id="@+id/mgbttn_agrupadores"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"

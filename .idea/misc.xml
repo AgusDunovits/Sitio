@@ -10,19 +10,24 @@
         <entry key="..\:/Proyecto/SITIO/Proyecto/app/src/main/res/layout/fragment_fragmento_casa.xml" value="0.33" />
         <entry key="..\:/Proyecto/SITIO/Proyecto/app/src/main/res/layout/fragment_fragmento_publicacion.xml" value="0.371875" />
         <entry key="..\:/Proyecto/SITIO/Proyecto/app/src/main/res/layout/fragment_fragmento_publicacion_edit.xml" value="0.3578125" />
+        <entry key="..\:/Proyecto/SITIO/Proyecto/app/src/main/res/layout/fragment_fragmento_publicacion_edit_2.xml" value="0.371875" />
         <entry key="..\:/Proyecto/SITIO/Proyecto/app/src/main/res/layout/fragment_fragmento_publicacion_publicar.xml" value="0.371875" />
         <entry key="..\:/Proyecto/SITIO/Proyecto/app/src/main/res/layout/fragment_fragmento_sugerencias.xml" value="0.371875" />
         <entry key="..\:/Proyecto/SITIO/Proyecto/app/src/main/res/layout/fragment_fragmento_usuario.xml" value="0.371875" />
         <entry key="..\:/Proyecto/SITIO/Proyecto/app/src/main/res/layout/fragment_fragmento_usuarioexterno.xml" value="0.371875" />
+        <entry key="..\:/Proyecto/SITIO/Proyecto/app/src/main/res/layout/fragment_fragmento_ver_publicaciones.xml" value="0.33" />
         <entry key="..\:/Users/Ignac/Documents/Personal/Ignacio/Sitio/app/src/main/res/layout/activity_main.xml" value="0.4" />
         <entry key="..\:/Users/Ignac/Documents/Personal/Ignacio/Sitio/app/src/main/res/layout/activity_principal.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Ignac/Documents/Personal/Ignacio/Sitio/app/src/main/res/layout/fragment_agrupadores.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Ignac/Documents/Personal/Ignacio/Sitio/app/src/main/res/layout/fragment_fragmento_ajustes.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Ignac/Documents/Personal/Ignacio/Sitio/app/src/main/res/layout/fragment_fragmento_buscar.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/Ignac/Documents/Personal/Ignacio/Sitio/app/src/main/res/layout/fragment_fragmento_casa.xml" value="0.264" />
+        <entry key="..\:/Users/Ignac/Documents/Personal/Ignacio/Sitio/app/src/main/res/layout/fragment_fragmento_casa.xml" value="0.4" />
         <entry key="..\:/Users/Ignac/Documents/Personal/Ignacio/Sitio/app/src/main/res/layout/fragment_fragmento_mapa.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Ignac/Documents/Personal/Ignacio/Sitio/app/src/main/res/layout/fragment_fragmento_proximos.xml" value="0.24010416666666667" />
         <entry key="..\:/Users/Ignac/Documents/Personal/Ignacio/Sitio/app/src/main/res/layout/fragment_fragmento_sugerencias.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/Ignac/Documents/Personal/Ignacio/Sitio/app/src/main/res/layout/fragment_fragmento_usuario.xml" value="0.2" />
         <entry key="..\:/Users/Ignac/Documents/Personal/Ignacio/Sitio/app/src/main/res/layout/fragment_fragmento_usuarioexterno.xml" value="0.16259057971014493" />
+        <entry key="..\:/Users/Ignac/Documents/Personal/Ignacio/Sitio/app/src/main/res/layout/fragment_localesfav.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Ignac/Documents/Personal/Ignacio/Sitio/app/src/main/res/mipmap-anydpi-v26/logoblanco.xml" value="0.115" />
       </map>
     </option>

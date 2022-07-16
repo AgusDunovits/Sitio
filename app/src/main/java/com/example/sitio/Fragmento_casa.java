@@ -10,6 +10,8 @@ import android.os.Bundle;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.speech.RecognizerIntent;
 import android.util.DisplayMetrics;
@@ -59,6 +61,17 @@ public class Fragmento_casa extends Fragment {
         int anchura_Historias = Facilitar.dpApixel( 80 , Recursos );
 
         View Vista = inflater.inflate( R.layout.fragment_fragmento_casa, container, false );
+        ImageButton mgbttn_agrupadores = Vista.findViewById(R.id.mgbttn_agrupadores);
+        mgbttn_agrupadores.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction transicion = fragmentManager.beginTransaction();
+                transicion.replace(R.id.Ventana_principal, new fragment_agrupadores());
+                transicion.commit();
+            }
+        });
+
         HorizontalScrollView HSV_pantalla = Vista.findViewById(R.id.HSV_pantalla);
         // Función para detectar eventos de arrastre y soltar para posicionar al usuario sobre cada publicación o historias
         HSV_pantalla.setOnTouchListener(new View.OnTouchListener() {
