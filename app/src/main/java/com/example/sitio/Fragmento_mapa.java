@@ -9,6 +9,8 @@ import android.os.Bundle;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -417,8 +419,12 @@ public class Fragmento_mapa extends Fragment {
                         ACTV_buscarZona.setHint("No existe esa localidad");
                     } else {
                         Bool_mapa = true;
-                        IV_Mapa.setVisibility(View.VISIBLE);
-                        LL_segundasOpciones.setVisibility(View.GONE);
+                        //IV_Mapa.setVisibility(View.VISIBLE);
+                        //LL_segundasOpciones.setVisibility(View.GONE);
+                        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                        FragmentTransaction transicion = fragmentManager.beginTransaction();
+                        transicion.replace(R.id.Ventana_principal, new MapsFragment());
+                        transicion.commit();
                     }
                 }
             }
