@@ -1,5 +1,6 @@
 package com.example.sitio;
 
+import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -8,13 +9,23 @@ import android.os.Bundle;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -24,6 +35,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
+
+import org.w3c.dom.Text;
+
+import java.util.Arrays;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -76,6 +91,17 @@ public class Fragmento_mapa extends Fragment {
     }
 
     int int_opcionPrincipal = 0;
+    String[] Localidades = {
+            "Villa Adelina",
+            "Villa Ballester",
+            "Olivos",
+            "Martinez",
+            "Munro",
+            "Victoria",
+            "San Fernando",
+            "Boulogne",
+            "Tigre"
+    };
     String[] String_cantidadOpciones = {
             "Comida\no\nBebida",
             "Moda",
@@ -323,17 +349,19 @@ public class Fragmento_mapa extends Fragment {
                 GridLayout.LayoutParams.WRAP_CONTENT, GridLayout.LayoutParams.MATCH_PARENT,1));
         LL_barraKm.addView(TV_seekBar);
 
-        SB_segundasOpciones.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                int int_progreso = SB_segundasOpciones.getProgress()+1;
-                TV_seekBar.setText("Distancia: "+int_progreso+"km");
-            }
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {}
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {}
-        });
+        LinearLayout.LayoutParams LLLP_buscarZona = new LinearLayout.LayoutParams(
+                GridLayout.LayoutParams.MATCH_PARENT, GridLayout.LayoutParams.WRAP_CONTENT
+        );
+        LLLP_buscarZona.setMargins(20,40,20,0);
+        AutoCompleteTextView ACTV_buscarZona = new AutoCompleteTextView(LL_segundasOpciones.getContext());
+        ACTV_buscarZona.setHint("Elegir localidad");
+        ACTV_buscarZona.setCompletionHint(" Elegir localidad");
+        ACTV_buscarZona.setLayoutParams(LLLP_buscarZona);
+        ACTV_buscarZona.setThreshold(1);
+        ACTV_buscarZona.setInputType(EditorInfo.TYPE_CLASS_TEXT);
+        ArrayAdapter<String> adaptador = new ArrayAdapter<String>(LL_segundasOpciones.getContext(), android.R.layout.simple_list_item_1,Localidades);
+        ACTV_buscarZona.setAdapter(adaptador);
+        LL_segundasOpciones.addView(ACTV_buscarZona);
 
         LinearLayout.LayoutParams LLLP_filtrar = new LinearLayout.LayoutParams(
                 GridLayout.LayoutParams.WRAP_CONTENT, GridLayout.LayoutParams.WRAP_CONTENT
@@ -350,13 +378,54 @@ public class Fragmento_mapa extends Fragment {
         id_botonFiltrar = Button_filtrar.getId();
         LL_segundasOpciones.addView(Button_filtrar);
 
+
+        ACTV_buscarZona.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                return false;
+            }
+        });
+        ACTV_buscarZona.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                InputMethodManager inputManager = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                View v = getActivity().getCurrentFocus();
+                if (v != null) {
+                    inputManager.hideSoftInputFromWindow(v.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+                }
+            }
+        });
+        SB_segundasOpciones.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                int int_progreso = SB_segundasOpciones.getProgress()+1;
+                TV_seekBar.setText("Distancia: "+int_progreso+"km");
+            }
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {}
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {}
+        });
         Button_filtrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(cantidadActivos>0){
-                    Bool_mapa = true;
-                    IV_Mapa.setVisibility(View.VISIBLE);
-                    LL_segundasOpciones.setVisibility(View.GONE);
+                    Boolean continuar = true;
+                    String miTexto = ACTV_buscarZona.getText().toString();
+                    if(!Arrays.stream(Localidades).anyMatch(miTexto::contains) && int_opcionPrincipal==2){
+                        continuar = false;
+                        ACTV_buscarZona.setText("");
+                        ACTV_buscarZona.setHintTextColor(Color.RED);
+                        ACTV_buscarZona.setHint("No existe esa localidad");
+                    } else {
+                        Bool_mapa = true;
+                        //IV_Mapa.setVisibility(View.VISIBLE);
+                        //LL_segundasOpciones.setVisibility(View.GONE);
+                        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                        FragmentTransaction transicion = fragmentManager.beginTransaction();
+                        transicion.replace(R.id.Ventana_principal, new MapsFragment());
+                        transicion.commit();
+                    }
                 }
             }
         });
@@ -366,6 +435,8 @@ public class Fragmento_mapa extends Fragment {
                 int_opcionPrincipal = 1;
                 LL_containerVertical.setVisibility(View.GONE);
                 LL_primerasOpciones.setVisibility(View.VISIBLE);
+                LL_barraKm.setVisibility(View.VISIBLE);
+                ACTV_buscarZona.setVisibility(View.GONE);
             }
         });
         Button_porZona.setOnClickListener(new View.OnClickListener() {
@@ -375,9 +446,9 @@ public class Fragmento_mapa extends Fragment {
                 LL_containerVertical.setVisibility(View.GONE);
                 LL_primerasOpciones.setVisibility(View.VISIBLE);
                 LL_barraKm.setVisibility(View.GONE);
+                ACTV_buscarZona.setVisibility(View.VISIBLE);
             }
         });
-
         IB_retroceder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

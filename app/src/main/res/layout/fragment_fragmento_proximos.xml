@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragmento_proximos">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="#FFB95A"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/boton_volver_a_usuario2"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="0"
+                android:scaleType="center"
+                android:src="?attr/actionModeCloseDrawable" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:text="Proximos a visitar"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="409dp"
+            android:layout_height="684dp"
+            android:orientation="vertical"
+            android:paddingTop="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+            tools:layout_editor_absoluteX="1dp">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="79dp"
+                android:backgroundTint="#FDD57A"
+                android:backgroundTintMode="src_atop"
+                android:text="Local 1"
+                android:textAlignment="textStart"
+                android:textColor="#232323"
+                android:textSize="20sp"
+                app:icon="@drawable/button_perfil" />
+
+            <Button
+                android:id="@+id/button5"
+                android:layout_width="match_parent"
+                android:layout_height="79dp"
+                android:backgroundTint="#FDD57A"
+                android:backgroundTintMode="src_atop"
+                android:text="Local 2"
+                android:textAlignment="textStart"
+                android:textColor="#232323"
+                android:textSize="20sp"
+                app:icon="@drawable/button_perfil" />
+
+            <Button
+                android:id="@+id/button7"
+                android:layout_width="match_parent"
+                android:layout_height="79dp"
+                android:backgroundTint="#FDD57A"
+                android:backgroundTintMode="src_atop"
+                android:text="Local 3"
+                android:textAlignment="textStart"
+                android:textColor="#232323"
+                android:textSize="20sp"
+                app:icon="@drawable/button_perfil" />
+
+            <Button
+                android:id="@+id/button9"
+                android:layout_width="match_parent"
+                android:layout_height="79dp"
+                android:backgroundTint="#FDD57A"
+                android:backgroundTintMode="src_atop"
+                android:text="Local 4"
+                android:textAlignment="textStart"
+                android:textColor="#232323"
+                android:textSize="20sp"
+                app:icon="@drawable/button_perfil" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
